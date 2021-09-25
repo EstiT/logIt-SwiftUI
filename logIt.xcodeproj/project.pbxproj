@@ -19,6 +19,10 @@
 		22A6058E26FF50AC0063A73B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6055F26FF50A90063A73B /* Persistence.swift */; };
 		22A6058F26FF50AC0063A73B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A6056026FF50AB0063A73B /* Assets.xcassets */; };
 		22A6059026FF50AC0063A73B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A6056026FF50AB0063A73B /* Assets.xcassets */; };
+		22A605A026FF575B0063A73B /* LogTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6059F26FF575B0063A73B /* LogTabView.swift */; };
+		22A605A126FF575B0063A73B /* LogTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6059F26FF575B0063A73B /* LogTabView.swift */; };
+		22A605A326FF62D00063A73B /* ChartTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A605A226FF62D00063A73B /* ChartTabView.swift */; };
+		22A605A426FF62D00063A73B /* ChartTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A605A226FF62D00063A73B /* ChartTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,8 @@
 		22A6058026FF50AC0063A73B /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A6058426FF50AC0063A73B /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		22A6058626FF50AC0063A73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22A6059F26FF575B0063A73B /* LogTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTabView.swift; sourceTree = "<group>"; };
+		22A605A226FF62D00063A73B /* ChartTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,8 @@
 				22A6055F26FF50A90063A73B /* Persistence.swift */,
 				22A6056026FF50AB0063A73B /* Assets.xcassets */,
 				22A6055B26FF50A90063A73B /* logIt.xcdatamodeld */,
+				22A6059F26FF575B0063A73B /* LogTabView.swift */,
+				22A605A226FF62D00063A73B /* ChartTabView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -319,7 +327,9 @@
 				22A6058726FF50AC0063A73B /* logIt.xcdatamodeld in Sources */,
 				22A6058D26FF50AC0063A73B /* Persistence.swift in Sources */,
 				22A6058926FF50AC0063A73B /* logItApp.swift in Sources */,
+				22A605A326FF62D00063A73B /* ChartTabView.swift in Sources */,
 				22A6058B26FF50AC0063A73B /* ContentView.swift in Sources */,
+				22A605A026FF575B0063A73B /* LogTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +340,9 @@
 				22A6058826FF50AC0063A73B /* logIt.xcdatamodeld in Sources */,
 				22A6058E26FF50AC0063A73B /* Persistence.swift in Sources */,
 				22A6058A26FF50AC0063A73B /* logItApp.swift in Sources */,
+				22A605A426FF62D00063A73B /* ChartTabView.swift in Sources */,
 				22A6058C26FF50AC0063A73B /* ContentView.swift in Sources */,
+				22A605A126FF575B0063A73B /* LogTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
