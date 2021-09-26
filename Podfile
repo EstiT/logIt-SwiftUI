@@ -6,13 +6,10 @@ target 'logIt (iOS)' do
   use_frameworks!
 
   # Pods for logIt (iOS)
-
 end
 
 target 'logIt (macOS)' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
   # Pods for logIt (macOS)
-
 end

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,7 @@
 		22A605A126FF575B0063A73B /* LogTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6059F26FF575B0063A73B /* LogTabView.swift */; };
 		22A605A326FF62D00063A73B /* ChartTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A605A226FF62D00063A73B /* ChartTabView.swift */; };
 		22A605A426FF62D00063A73B /* ChartTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A605A226FF62D00063A73B /* ChartTabView.swift */; };
+		22A605A72700856E0063A73B /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 22A605A62700856E0063A73B /* SwiftUICharts */; };
 		4ABB824426C42D350EA5D644 /* Pods_logIt__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6701DEA644B147E7DC4673AC /* Pods_logIt__iOS_.framework */; };
 		BE22C93C72D3BA11CB480983 /* Pods_logIt__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8B1147370832C88B114725 /* Pods_logIt__macOS_.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ABB824426C42D350EA5D644 /* Pods_logIt__iOS_.framework in Frameworks */,
+				22A605A72700856E0063A73B /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +189,6 @@
 				EA0A26D73EB590269DAAA686 /* Pods-logIt (macOS).debug.xcconfig */,
 				824F73BA33D5DB9910353C8C /* Pods-logIt (macOS).release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -217,6 +218,9 @@
 			dependencies = (
 			);
 			name = "logIt (iOS)";
+			packageProductDependencies = (
+				22A605A62700856E0063A73B /* SwiftUICharts */,
+			);
 			productName = "logIt (iOS)";
 			productReference = 22A6056526FF50AB0063A73B /* logIt.app */;
 			productType = "com.apple.product-type.application";
@@ -309,6 +313,9 @@
 				Base,
 			);
 			mainGroup = 22A6055526FF50A90063A73B;
+			packageReferences = (
+				22A605A52700856E0063A73B /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 22A6056626FF50AB0063A73B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -806,6 +813,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22A605A52700856E0063A73B /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22A605A62700856E0063A73B /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22A605A52700856E0063A73B /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		22A6055B26FF50A90063A73B /* logIt.xcdatamodeld */ = {

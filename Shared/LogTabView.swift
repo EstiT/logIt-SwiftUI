@@ -53,12 +53,7 @@ struct LogTabView: View {
                         }
                     }
                 }
-                
-                .navigationBarTitle("Log a sesh")
-                .tabItem {
-                    Image(systemName: "square.and.pencil")
-                    Text("Log")
-                }
+                .navigationTitle("Log a sesh")
             }
         }
     }

@@ -20,12 +20,20 @@ struct ContentView: View {
         
         TabView {
             LogTabView()
+                .tabItem {
+                    Image(systemName: "square.and.pencil")
+                    Text("Log")
+                }
             ChartTabView()
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Text("Trend")
+                }
         }
         
     }
     
-
+    
     
     private func addItem() {
         withAnimation {
