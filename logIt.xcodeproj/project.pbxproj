@@ -23,6 +23,8 @@
 		22A605A126FF575B0063A73B /* LogTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6059F26FF575B0063A73B /* LogTabView.swift */; };
 		22A605A326FF62D00063A73B /* ChartTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A605A226FF62D00063A73B /* ChartTabView.swift */; };
 		22A605A426FF62D00063A73B /* ChartTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A605A226FF62D00063A73B /* ChartTabView.swift */; };
+		4ABB824426C42D350EA5D644 /* Pods_logIt__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6701DEA644B147E7DC4673AC /* Pods_logIt__iOS_.framework */; };
+		BE22C93C72D3BA11CB480983 /* Pods_logIt__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8B1147370832C88B114725 /* Pods_logIt__macOS_.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,12 @@
 		22A6058626FF50AC0063A73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22A6059F26FF575B0063A73B /* LogTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTabView.swift; sourceTree = "<group>"; };
 		22A605A226FF62D00063A73B /* ChartTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTabView.swift; sourceTree = "<group>"; };
+		6701DEA644B147E7DC4673AC /* Pods_logIt__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_logIt__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E94B66C9BE723D79FB5CB42 /* Pods-logIt (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-logIt (iOS).debug.xcconfig"; path = "Target Support Files/Pods-logIt (iOS)/Pods-logIt (iOS).debug.xcconfig"; sourceTree = "<group>"; };
+		824F73BA33D5DB9910353C8C /* Pods-logIt (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-logIt (macOS).release.xcconfig"; path = "Target Support Files/Pods-logIt (macOS)/Pods-logIt (macOS).release.xcconfig"; sourceTree = "<group>"; };
+		862F70546A4B284AC45CFC5A /* Pods-logIt (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-logIt (iOS).release.xcconfig"; path = "Target Support Files/Pods-logIt (iOS)/Pods-logIt (iOS).release.xcconfig"; sourceTree = "<group>"; };
+		AB8B1147370832C88B114725 /* Pods_logIt__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_logIt__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA0A26D73EB590269DAAA686 /* Pods-logIt (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-logIt (macOS).debug.xcconfig"; path = "Target Support Files/Pods-logIt (macOS)/Pods-logIt (macOS).debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ABB824426C42D350EA5D644 /* Pods_logIt__iOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE22C93C72D3BA11CB480983 /* Pods_logIt__macOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +114,8 @@
 				22A6057826FF50AC0063A73B /* Tests iOS */,
 				22A6058326FF50AC0063A73B /* Tests macOS */,
 				22A6056626FF50AB0063A73B /* Products */,
+				8A001EE2C18BF8F481C2C2CC /* Pods */,
+				BB9C222959E13A176C565762 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,6 +179,27 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		8A001EE2C18BF8F481C2C2CC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E94B66C9BE723D79FB5CB42 /* Pods-logIt (iOS).debug.xcconfig */,
+				862F70546A4B284AC45CFC5A /* Pods-logIt (iOS).release.xcconfig */,
+				EA0A26D73EB590269DAAA686 /* Pods-logIt (macOS).debug.xcconfig */,
+				824F73BA33D5DB9910353C8C /* Pods-logIt (macOS).release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BB9C222959E13A176C565762 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6701DEA644B147E7DC4673AC /* Pods_logIt__iOS_.framework */,
+				AB8B1147370832C88B114725 /* Pods_logIt__macOS_.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -174,6 +207,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22A6059326FF50AC0063A73B /* Build configuration list for PBXNativeTarget "logIt (iOS)" */;
 			buildPhases = (
+				AB7741E208486565323B060B /* [CP] Check Pods Manifest.lock */,
 				22A6056126FF50AB0063A73B /* Sources */,
 				22A6056226FF50AB0063A73B /* Frameworks */,
 				22A6056326FF50AB0063A73B /* Resources */,
@@ -191,6 +225,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22A6059626FF50AC0063A73B /* Build configuration list for PBXNativeTarget "logIt (macOS)" */;
 			buildPhases = (
+				F432077CE4BC71F0E7814359 /* [CP] Check Pods Manifest.lock */,
 				22A6056926FF50AB0063A73B /* Sources */,
 				22A6056A26FF50AB0063A73B /* Frameworks */,
 				22A6056B26FF50AB0063A73B /* Resources */,
@@ -318,6 +353,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AB7741E208486565323B060B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-logIt (iOS)-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F432077CE4BC71F0E7814359 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-logIt (macOS)-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		22A6056126FF50AB0063A73B /* Sources */ = {
@@ -491,6 +573,7 @@
 		};
 		22A6059426FF50AC0063A73B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E94B66C9BE723D79FB5CB42 /* Pods-logIt (iOS).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -513,6 +596,7 @@
 		};
 		22A6059526FF50AC0063A73B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 862F70546A4B284AC45CFC5A /* Pods-logIt (iOS).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -536,6 +620,7 @@
 		};
 		22A6059726FF50AC0063A73B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA0A26D73EB590269DAAA686 /* Pods-logIt (macOS).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -560,6 +645,7 @@
 		};
 		22A6059826FF50AC0063A73B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 824F73BA33D5DB9910353C8C /* Pods-logIt (macOS).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

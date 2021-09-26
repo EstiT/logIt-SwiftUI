@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A4B8E071589A59F4537CABB066BDFD7 /* Pods-logIt (macOS)-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22287D131FF34287F2F68300BD6615C3 /* Pods-logIt (macOS)-dummy.m */; };
+		806A6FD9E92C1BF8674C3D02B6846032 /* Pods-logIt (iOS)-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEF1F6D39915094575AF62FEB16DBEC /* Pods-logIt (iOS)-dummy.m */; };
+		83DEF69FB38699356061EFFE55FC91CF /* Pods-logIt (iOS)-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E2F0584FA380EE6596748240372E59F /* Pods-logIt (iOS)-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A0774F22F5E76D5EBE0920BC1AB247E7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A54C97DEB1A3977AC3A62AFF00971BF /* Cocoa.framework */; };
+		AE8B62143B3AF7A7239EE77E915988A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3261E5A5395F45780622405F504B2804 /* Foundation.framework */; };
+		EA1EC111961F2572D078A4F3238EF8F9 /* Pods-logIt (macOS)-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 554BFED28B6AAA8C7ECBF84C27A42BC1 /* Pods-logIt (macOS)-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0147446C828F2DAB408D78DAF449F15F /* Pods-logIt (iOS).modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-logIt (iOS).modulemap"; sourceTree = "<group>"; };
+		10DFB58B87F9BCC7EEB1EBCE802BC528 /* Pods-logIt (macOS)-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-logIt (macOS)-acknowledgements.plist"; sourceTree = "<group>"; };
+		1D6F5506B6E0E83B5E5D73D8E4826EC6 /* Pods-logIt (iOS)-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-logIt (iOS)-acknowledgements.plist"; sourceTree = "<group>"; };
+		22287D131FF34287F2F68300BD6615C3 /* Pods-logIt (macOS)-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-logIt (macOS)-dummy.m"; sourceTree = "<group>"; };
+		3217EA5043926BCA0A8F7E8480CCFFD8 /* Pods-logIt (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-logIt (macOS).release.xcconfig"; sourceTree = "<group>"; };
+		3261E5A5395F45780622405F504B2804 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3E2F0584FA380EE6596748240372E59F /* Pods-logIt (iOS)-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-logIt (iOS)-umbrella.h"; sourceTree = "<group>"; };
+		4EE3591127C1ACA4125CE022B75FCEFF /* Pods-logIt (macOS)-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-logIt (macOS)-Info.plist"; sourceTree = "<group>"; };
+		554BFED28B6AAA8C7ECBF84C27A42BC1 /* Pods-logIt (macOS)-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-logIt (macOS)-umbrella.h"; sourceTree = "<group>"; };
+		5A54C97DEB1A3977AC3A62AFF00971BF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		6F8DB5318B94402357F48D0279794EEE /* Pods-logIt (iOS)-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-logIt (iOS)-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8147B83F57163E3DCD83D6334CC8272B /* Pods-logIt (macOS) */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-logIt (macOS)"; path = Pods_logIt__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		941BB04437BA197F5ADCDC9CFD31D96F /* Pods-logIt (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-logIt (iOS).debug.xcconfig"; sourceTree = "<group>"; };
+		975297C09E727ECA6CE32B4085C130A2 /* Pods-logIt (macOS).modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-logIt (macOS).modulemap"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DF131F0A23F9286C6E66961FB3E150C /* Pods-logIt (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-logIt (macOS).debug.xcconfig"; sourceTree = "<group>"; };
+		AE62814FA97F0035A5012A7D0961076A /* Pods-logIt (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-logIt (iOS).release.xcconfig"; sourceTree = "<group>"; };
+		DCD1C9A14E1EE89D7369F5B29DA97BE0 /* Pods-logIt (macOS)-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-logIt (macOS)-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DE8F93364A23B00CD72417C2DC43A2B0 /* Pods-logIt (iOS)-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-logIt (iOS)-Info.plist"; sourceTree = "<group>"; };
+		EBEF1F6D39915094575AF62FEB16DBEC /* Pods-logIt (iOS)-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-logIt (iOS)-dummy.m"; sourceTree = "<group>"; };
+		F7AB88DEA9A4F5343622ECAA5B5C7EF1 /* Pods-logIt (iOS) */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-logIt (iOS)"; path = Pods_logIt__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		57ADD0E895B34F916709394ECD759FD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0774F22F5E76D5EBE0920BC1AB247E7 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96992F8BE9A66FAC034B0C0F12107D81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE8B62143B3AF7A7239EE77E915988A2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		41C052635D3E21350AC08C5F316759F6 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				5A54C97DEB1A3977AC3A62AFF00971BF /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		4EDC20B56A0B9A8564E1FCEA191C83C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DABCD2AA1C1DFCD4E2578CE87BDFD93F /* iOS */,
+				41C052635D3E21350AC08C5F316759F6 /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64647F61E6C5086316BFA4D876D7093C /* Pods-logIt (macOS) */ = {
+			isa = PBXGroup;
+			children = (
+				975297C09E727ECA6CE32B4085C130A2 /* Pods-logIt (macOS).modulemap */,
+				DCD1C9A14E1EE89D7369F5B29DA97BE0 /* Pods-logIt (macOS)-acknowledgements.markdown */,
+				10DFB58B87F9BCC7EEB1EBCE802BC528 /* Pods-logIt (macOS)-acknowledgements.plist */,
+				22287D131FF34287F2F68300BD6615C3 /* Pods-logIt (macOS)-dummy.m */,
+				4EE3591127C1ACA4125CE022B75FCEFF /* Pods-logIt (macOS)-Info.plist */,
+				554BFED28B6AAA8C7ECBF84C27A42BC1 /* Pods-logIt (macOS)-umbrella.h */,
+				9DF131F0A23F9286C6E66961FB3E150C /* Pods-logIt (macOS).debug.xcconfig */,
+				3217EA5043926BCA0A8F7E8480CCFFD8 /* Pods-logIt (macOS).release.xcconfig */,
+			);
+			name = "Pods-logIt (macOS)";
+			path = "Target Support Files/Pods-logIt (macOS)";
+			sourceTree = "<group>";
+		};
+		A877586101CD8B36C7A642563FB338BD /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB29BF9073A9C5E92735B74CEC671A67 /* Pods-logIt (iOS) */,
+				64647F61E6C5086316BFA4D876D7093C /* Pods-logIt (macOS) */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		CB29BF9073A9C5E92735B74CEC671A67 /* Pods-logIt (iOS) */ = {
+			isa = PBXGroup;
+			children = (
+				0147446C828F2DAB408D78DAF449F15F /* Pods-logIt (iOS).modulemap */,
+				6F8DB5318B94402357F48D0279794EEE /* Pods-logIt (iOS)-acknowledgements.markdown */,
+				1D6F5506B6E0E83B5E5D73D8E4826EC6 /* Pods-logIt (iOS)-acknowledgements.plist */,
+				EBEF1F6D39915094575AF62FEB16DBEC /* Pods-logIt (iOS)-dummy.m */,
+				DE8F93364A23B00CD72417C2DC43A2B0 /* Pods-logIt (iOS)-Info.plist */,
+				3E2F0584FA380EE6596748240372E59F /* Pods-logIt (iOS)-umbrella.h */,
+				941BB04437BA197F5ADCDC9CFD31D96F /* Pods-logIt (iOS).debug.xcconfig */,
+				AE62814FA97F0035A5012A7D0961076A /* Pods-logIt (iOS).release.xcconfig */,
+			);
+			name = "Pods-logIt (iOS)";
+			path = "Target Support Files/Pods-logIt (iOS)";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				4EDC20B56A0B9A8564E1FCEA191C83C4 /* Frameworks */,
+				F721B2754F781C165513ABFECD156772 /* Products */,
+				A877586101CD8B36C7A642563FB338BD /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		DABCD2AA1C1DFCD4E2578CE87BDFD93F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3261E5A5395F45780622405F504B2804 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		F721B2754F781C165513ABFECD156772 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F7AB88DEA9A4F5343622ECAA5B5C7EF1 /* Pods-logIt (iOS) */,
+				8147B83F57163E3DCD83D6334CC8272B /* Pods-logIt (macOS) */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		292AACA06118AD509867ABC7A2DC185E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83DEF69FB38699356061EFFE55FC91CF /* Pods-logIt (iOS)-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E65C4929DD57023866BE3964C243A8C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA1EC111961F2572D078A4F3238EF8F9 /* Pods-logIt (macOS)-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		22CC3E7EC4115452215E21FC47C4C806 /* Pods-logIt (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA2D92B2FF2C6340945D1A159525FCE7 /* Build configuration list for PBXNativeTarget "Pods-logIt (iOS)" */;
+			buildPhases = (
+				292AACA06118AD509867ABC7A2DC185E /* Headers */,
+				E44AD003EC2CEB7B7A82C9C746677747 /* Sources */,
+				96992F8BE9A66FAC034B0C0F12107D81 /* Frameworks */,
+				F6B92700714DEB4612DF62F2611E1F2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-logIt (iOS)";
+			productName = Pods_logIt__iOS_;
+			productReference = F7AB88DEA9A4F5343622ECAA5B5C7EF1 /* Pods-logIt (iOS) */;
+			productType = "com.apple.product-type.framework";
+		};
+		56DB26CD4D41CB434D19F69A3A96AA00 /* Pods-logIt (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CDA0B82B2C75375EB7C6B8778B5886A /* Build configuration list for PBXNativeTarget "Pods-logIt (macOS)" */;
+			buildPhases = (
+				5E65C4929DD57023866BE3964C243A8C /* Headers */,
+				FC971A804CEB05F6B11B6A63E2C33BF9 /* Sources */,
+				57ADD0E895B34F916709394ECD759FD1 /* Frameworks */,
+				C342BD5C04711451BD456E0E6D3D3C57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-logIt (macOS)";
+			productName = Pods_logIt__macOS_;
+			productReference = 8147B83F57163E3DCD83D6334CC8272B /* Pods-logIt (macOS) */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = F721B2754F781C165513ABFECD156772 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22CC3E7EC4115452215E21FC47C4C806 /* Pods-logIt (iOS) */,
+				56DB26CD4D41CB434D19F69A3A96AA00 /* Pods-logIt (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C342BD5C04711451BD456E0E6D3D3C57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6B92700714DEB4612DF62F2611E1F2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E44AD003EC2CEB7B7A82C9C746677747 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				806A6FD9E92C1BF8674C3D02B6846032 /* Pods-logIt (iOS)-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC971A804CEB05F6B11B6A63E2C33BF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A4B8E071589A59F4537CABB066BDFD7 /* Pods-logIt (macOS)-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1EDF5E2E001DCF80311E5D55124C90C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 941BB04437BA197F5ADCDC9CFD31D96F /* Pods-logIt (iOS).debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-logIt (iOS)/Pods-logIt (iOS)-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-logIt (iOS)/Pods-logIt (iOS).modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4FB9DCB63F5476510B92C1CD6A065711 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3217EA5043926BCA0A8F7E8480CCFFD8 /* Pods-logIt (macOS).release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-logIt (macOS)/Pods-logIt (macOS)-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MODULEMAP_FILE = "Target Support Files/Pods-logIt (macOS)/Pods-logIt (macOS).modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8F03ECAACE4C60239E5C589F71D2D33F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DF131F0A23F9286C6E66961FB3E150C /* Pods-logIt (macOS).debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-logIt (macOS)/Pods-logIt (macOS)-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MODULEMAP_FILE = "Target Support Files/Pods-logIt (macOS)/Pods-logIt (macOS).modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		92236969D2CAE522F4C49923D0CA0A98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		94D663F2A5E10E3DBA580BD075610152 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		BDF5ACD941DECE218F0F1631E6E7C34A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE62814FA97F0035A5012A7D0961076A /* Pods-logIt (iOS).release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-logIt (iOS)/Pods-logIt (iOS)-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-logIt (iOS)/Pods-logIt (iOS).modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2CDA0B82B2C75375EB7C6B8778B5886A /* Build configuration list for PBXNativeTarget "Pods-logIt (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F03ECAACE4C60239E5C589F71D2D33F /* Debug */,
+				4FB9DCB63F5476510B92C1CD6A065711 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94D663F2A5E10E3DBA580BD075610152 /* Debug */,
+				92236969D2CAE522F4C49923D0CA0A98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA2D92B2FF2C6340945D1A159525FCE7 /* Build configuration list for PBXNativeTarget "Pods-logIt (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EDF5E2E001DCF80311E5D55124C90C2 /* Debug */,
+				BDF5ACD941DECE218F0F1631E6E7C34A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

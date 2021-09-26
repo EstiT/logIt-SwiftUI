@@ -1,0 +1,6 @@
+framework module Pods_logIt__macOS_ {
+  umbrella header "Pods-logIt (macOS)-umbrella.h"
+
+  export *
+  module * { export * }
+}
