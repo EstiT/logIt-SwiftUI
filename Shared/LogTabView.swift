@@ -10,45 +10,57 @@ import SwiftUI
 
 struct LogTabView: View {
     @State var selectedDate = Date()
+    @State var note = "Notes"
+    @State private var strengthIndex = 0
+    @State private var sessionIndex = 0
+    @State var injured = false
+    var strengthOptions = ["Weak", "Average", "Strong"]
+    var sessionOptions = ["Meh", "Average", "Good"]
     
     var body: some View {
-        VStack{
-            DatePicker("", selection: $selectedDate, displayedComponents: .date)
-            Text("Strength Rating:")
-            HStack{
-                Button(action: select) {
-                    Label("Weak", systemImage: "minus")
+        NavigationView {
+            GeometryReader { geometry in
+                Form {
+                    DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
+                    
+                    Section(header: Text("Ratings")){
+                        Picker(selection: $strengthIndex, label: Text("Strength Rating")) {
+                            ForEach(0 ..< strengthOptions.count) {
+                                Text(self.strengthOptions[$0])
+                            }
+                        }
+                        Picker(selection: $sessionIndex, label: Text("Session Rating")) {
+                            ForEach(0 ..< sessionOptions.count) {
+                                Text(self.sessionOptions[$0])
+                            }
+                        }
+                    }
+                    Section(header: Text("Details")) {
+                        Toggle(isOn: $injured) {
+                            Text("Injured?")
+                        }
+                        TextEditor(text: $note)
+                            .frame(height: geometry.size.height / 4.5, alignment: .center)
+                            .onTapGesture {
+                                if self.note == "Notes" {
+                                    self.note = ""
+                                }
+                            }
+                    }
+                    Section {
+                        Button(action: select) {
+                            Text("Save")
+                        }
+                    }
                 }
-                Button(action: select) {
-                    Label("Average", systemImage: "")
+                
+                .navigationBarTitle("Log a sesh")
+                .tabItem {
+                    Image(systemName: "square.and.pencil")
+                    Text("Log")
                 }
-                Button(action: select) {
-                    Label("Strong", systemImage: "")
-                    Label("", systemImage: "plus")
-                }
-            }
-            Text("Overall Session Rating:")
-            HStack{
-                Button(action: select) {
-                    Label("Meh", systemImage: "minus")
-                }
-                Button(action: select) {
-                    Label("Average", systemImage: "")
-                }
-                Button(action: select) {
-                    Label("Good", systemImage: "")
-                    Label("", systemImage: "plus")
-                }
-            }
-            Button(action: select) {
-                Label("Save", systemImage: "")
             }
         }
-        .tabItem {
-            Image(systemName: "square.and.pencil")
-            Text("Log")
-        }
-        
     }
 }
 
