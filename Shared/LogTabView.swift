@@ -11,11 +11,11 @@ import SwiftUI
 struct LogTabView: View {
     @State var selectedDate = Date()
     @State var note = "Notes"
-    @State private var strengthIndex = 0
-    @State private var sessionIndex = 0
+    @State private var strengthIndex = 2
+    @State private var sessionIndex = 2
     @State var injured = false
-    var strengthOptions = ["Weak", "Average", "Strong"]
-    var sessionOptions = ["Meh", "Average", "Good"]
+    var strengthOptions = ["1 - Weak Sauce", "2 - Weak", "3 - Average", "4 - Good", "5 - Strong"]
+    var sessionOptions = ["1 - Shit", "2 - Meh", "3 - Average", "4 - Good", "5 - Excellent"]
     
     var body: some View {
         NavigationView {
@@ -40,7 +40,7 @@ struct LogTabView: View {
                             Text("Injured?")
                         }
                         TextEditor(text: $note)
-                            .frame(height: geometry.size.height / 4.5, alignment: .center)
+                            .frame(height: geometry.size.height / 5, alignment: .center)
                             .onTapGesture {
                                 if self.note == "Notes" {
                                     self.note = ""
