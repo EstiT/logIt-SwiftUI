@@ -24,6 +24,7 @@
 		22A605A326FF62D00063A73B /* ChartTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A605A226FF62D00063A73B /* ChartTabView.swift */; };
 		22A605A426FF62D00063A73B /* ChartTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A605A226FF62D00063A73B /* ChartTabView.swift */; };
 		22A605A72700856E0063A73B /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 22A605A62700856E0063A73B /* SwiftUICharts */; };
+		22AC1E8B2701CF9F00A6C1F8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 22AC1E8A2701CF9F00A6C1F8 /* AlertToast */; };
 		4ABB824426C42D350EA5D644 /* Pods_logIt__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6701DEA644B147E7DC4673AC /* Pods_logIt__iOS_.framework */; };
 		BE22C93C72D3BA11CB480983 /* Pods_logIt__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8B1147370832C88B114725 /* Pods_logIt__macOS_.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22AC1E8B2701CF9F00A6C1F8 /* AlertToast in Frameworks */,
 				4ABB824426C42D350EA5D644 /* Pods_logIt__iOS_.framework in Frameworks */,
 				22A605A72700856E0063A73B /* SwiftUICharts in Frameworks */,
 			);
@@ -220,6 +222,7 @@
 			name = "logIt (iOS)";
 			packageProductDependencies = (
 				22A605A62700856E0063A73B /* SwiftUICharts */,
+				22AC1E8A2701CF9F00A6C1F8 /* AlertToast */,
 			);
 			productName = "logIt (iOS)";
 			productReference = 22A6056526FF50AB0063A73B /* logIt.app */;
@@ -315,6 +318,7 @@
 			mainGroup = 22A6055526FF50A90063A73B;
 			packageReferences = (
 				22A605A52700856E0063A73B /* XCRemoteSwiftPackageReference "ChartView" */,
+				22AC1E892701CF9F00A6C1F8 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = 22A6056626FF50AB0063A73B /* Products */;
 			projectDirPath = "";
@@ -518,6 +522,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -571,6 +576,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -823,6 +829,14 @@
 				minimumVersion = 1.5.5;
 			};
 		};
+		22AC1E892701CF9F00A6C1F8 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -830,6 +844,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 22A605A52700856E0063A73B /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
+		};
+		22AC1E8A2701CF9F00A6C1F8 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22AC1E892701CF9F00A6C1F8 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 /* End XCSwiftPackageProductDependency section */
 

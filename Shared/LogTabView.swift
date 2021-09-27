@@ -7,8 +7,10 @@
 
 import CoreData
 import SwiftUI
+import AlertToast
 
 struct LogTabView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @State var selectedDate = Date()
     @State var note = "Notes"
     @State private var strengthIndex = 2
@@ -16,6 +18,8 @@ struct LogTabView: View {
     @State var injured = false
     var strengthOptions = ["1 - Weak Sauce", "2 - Weak", "3 - Average", "4 - Good", "5 - Strong"]
     var sessionOptions = ["1 - Shit", "2 - Meh", "3 - Average", "4 - Good", "5 - Excellent"]
+    @State private var showSuccess = false
+    @State private var showFail = false
     
     var body: some View {
         NavigationView {
@@ -48,17 +52,36 @@ struct LogTabView: View {
                             }
                     }
                     Section {
-                        Button(action: select) {
+                        Button(action: save) {
                             Text("Save")
                         }
                     }
+                }.toast(isPresenting: $showSuccess){
+                    AlertToast(displayMode: .alert, type: .regular, title: "Saved")
+                }
+                .toast(isPresenting: $showFail){
+                    AlertToast(displayMode: .alert, type: .regular, title: "Failed to save")
                 }
                 .navigationTitle("Log a sesh")
             }
         }
     }
+    
+    private func save(){
+        let newSesh = Session(context: viewContext)
+        newSesh.date = selectedDate
+        newSesh.injured = injured
+        newSesh.strengthRating = Int16(strengthIndex)
+        newSesh.sessionRating = Int16(sessionIndex)
+        do {
+            try viewContext.save()
+            showSuccess.toggle()
+        } catch {
+            showFail.toggle()
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
 }
 
-private func select(){
-    
-}
+

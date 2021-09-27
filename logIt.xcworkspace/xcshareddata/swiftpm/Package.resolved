@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "AlertToast",
+        "repositoryURL": "https://github.com/elai950/AlertToast.git",
+        "state": {
+          "branch": "master",
+          "revision": "a05db1fed0a518465a86b69a6aed8a2618516f95",
+          "version": null
+        }
+      },
+      {
         "package": "SwiftUICharts",
         "repositoryURL": "https://github.com/AppPear/ChartView",
         "state": {
