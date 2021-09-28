@@ -20,10 +20,10 @@ struct SeshRow: View {
         Text(Self.dateFormatter.string(from: sesh.date!))
         .font(.title)
       
-        Text("Session Rating: \(String(sesh.sessionRating))")
+        Text("Session Rating: \(String(sesh.sessionRating+1))")
           .font(.subheadline)
         Spacer()
-        Text("Strength Rating: \(String(sesh.strengthRating))")
+        Text("Strength Rating: \(String(sesh.strengthRating+1))")
           .font(.subheadline)
         Spacer()
       
