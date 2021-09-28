@@ -25,6 +25,10 @@
 		22A605A426FF62D00063A73B /* ChartTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A605A226FF62D00063A73B /* ChartTabView.swift */; };
 		22A605A72700856E0063A73B /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 22A605A62700856E0063A73B /* SwiftUICharts */; };
 		22AC1E8B2701CF9F00A6C1F8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 22AC1E8A2701CF9F00A6C1F8 /* AlertToast */; };
+		22AC1E8D2701DB5D00A6C1F8 /* SeshList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */; };
+		22AC1E8E2701DB5D00A6C1F8 /* SeshList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */; };
+		22AC1E902701DDE700A6C1F8 /* SeshRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */; };
+		22AC1E912701DDE700A6C1F8 /* SeshRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */; };
 		4ABB824426C42D350EA5D644 /* Pods_logIt__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6701DEA644B147E7DC4673AC /* Pods_logIt__iOS_.framework */; };
 		BE22C93C72D3BA11CB480983 /* Pods_logIt__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8B1147370832C88B114725 /* Pods_logIt__macOS_.framework */; };
 /* End PBXBuildFile section */
@@ -65,6 +69,8 @@
 		22A6058626FF50AC0063A73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22A6059F26FF575B0063A73B /* LogTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTabView.swift; sourceTree = "<group>"; };
 		22A605A226FF62D00063A73B /* ChartTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTabView.swift; sourceTree = "<group>"; };
+		22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeshList.swift; sourceTree = "<group>"; };
+		22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeshRow.swift; sourceTree = "<group>"; };
 		6701DEA644B147E7DC4673AC /* Pods_logIt__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_logIt__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E94B66C9BE723D79FB5CB42 /* Pods-logIt (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-logIt (iOS).debug.xcconfig"; path = "Target Support Files/Pods-logIt (iOS)/Pods-logIt (iOS).debug.xcconfig"; sourceTree = "<group>"; };
 		824F73BA33D5DB9910353C8C /* Pods-logIt (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-logIt (macOS).release.xcconfig"; path = "Target Support Files/Pods-logIt (macOS)/Pods-logIt (macOS).release.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +139,8 @@
 				22A6055B26FF50A90063A73B /* logIt.xcdatamodeld */,
 				22A6059F26FF575B0063A73B /* LogTabView.swift */,
 				22A605A226FF62D00063A73B /* ChartTabView.swift */,
+				22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */,
+				22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -420,7 +428,9 @@
 				22A6058726FF50AC0063A73B /* logIt.xcdatamodeld in Sources */,
 				22A6058D26FF50AC0063A73B /* Persistence.swift in Sources */,
 				22A6058926FF50AC0063A73B /* logItApp.swift in Sources */,
+				22AC1E902701DDE700A6C1F8 /* SeshRow.swift in Sources */,
 				22A605A326FF62D00063A73B /* ChartTabView.swift in Sources */,
+				22AC1E8D2701DB5D00A6C1F8 /* SeshList.swift in Sources */,
 				22A6058B26FF50AC0063A73B /* ContentView.swift in Sources */,
 				22A605A026FF575B0063A73B /* LogTabView.swift in Sources */,
 			);
@@ -433,7 +443,9 @@
 				22A6058826FF50AC0063A73B /* logIt.xcdatamodeld in Sources */,
 				22A6058E26FF50AC0063A73B /* Persistence.swift in Sources */,
 				22A6058A26FF50AC0063A73B /* logItApp.swift in Sources */,
+				22AC1E912701DDE700A6C1F8 /* SeshRow.swift in Sources */,
 				22A605A426FF62D00063A73B /* ChartTabView.swift in Sources */,
+				22AC1E8E2701DB5D00A6C1F8 /* SeshList.swift in Sources */,
 				22A6058C26FF50AC0063A73B /* ContentView.swift in Sources */,
 				22A605A126FF575B0063A73B /* LogTabView.swift in Sources */,
 			);
@@ -599,7 +611,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.logIt.logIt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.log.It;
 				PRODUCT_NAME = logIt;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -622,7 +634,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.logIt.logIt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.log.It;
 				PRODUCT_NAME = logIt;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;

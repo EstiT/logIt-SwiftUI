@@ -16,6 +16,11 @@ struct ContentView: View {
                     Image(systemName: "square.and.pencil")
                     Text("Log")
                 }
+            SeshList()
+                .tabItem {
+                    Image(systemName: "list.bullet")
+                    Text("List")
+                }
             ChartTabView()
                 .tabItem {
                     Image(systemName: "waveform.path.ecg") //chart.xyaxis.line  / chart.line.uptrend.xyaxis
