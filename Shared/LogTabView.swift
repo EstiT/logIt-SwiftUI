@@ -62,7 +62,6 @@ struct LogTabView: View {
                 .toast(isPresenting: $showFail){
                     AlertToast(displayMode: .alert, type: .regular, title: "Failed to save")
                 }
-                .modifier(DismissingKeyboard())
                 .navigationTitle("Log a sesh")
             }
         }
@@ -72,6 +71,7 @@ struct LogTabView: View {
         let newSesh = Session(context: viewContext)
         newSesh.date = selectedDate
         newSesh.injured = injured
+        newSesh.notes = note
         newSesh.strengthRating = Int16(strengthIndex)
         newSesh.sessionRating = Int16(sessionIndex)
         do {
@@ -81,21 +81,6 @@ struct LogTabView: View {
             showFail.toggle()
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
-    
-    struct DismissingKeyboard: ViewModifier {
-        func body(content: Content) -> some View {
-            content
-                .onTapGesture {
-                    let keyWindow = UIApplication.shared.connectedScenes
-                            .filter({$0.activationState == .foregroundActive})
-                            .map({$0 as? UIWindowScene})
-                            .compactMap({$0})
-                            .first?.windows
-                            .filter({$0.isKeyWindow}).first
-                    keyWindow?.endEditing(true)
-            }
         }
     }
 }
