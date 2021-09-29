@@ -72,8 +72,8 @@ struct LogTabView: View {
         newSesh.date = selectedDate
         newSesh.injured = injured
         newSesh.notes = note
-        newSesh.strengthRating = Int16(strengthIndex)
-        newSesh.sessionRating = Int16(sessionIndex)
+        newSesh.strengthRating = Int16(strengthIndex + 1)
+        newSesh.sessionRating = Int16(sessionIndex + 1)
         do {
             try viewContext.save()
             showSuccess.toggle()

@@ -20,10 +20,10 @@ struct SeshRow: View {
             Text(Self.dateFormatter.string(from: sesh.date!))
                 .font(.title)
             HStack {
-                Text("Session: \(String(sesh.sessionRating+1))")
+                Text("Session: \(String(sesh.sessionRating))")
                     .font(.subheadline)
                 Spacer()
-                Text("Strength: \(String(sesh.strengthRating+1))")
+                Text("Strength: \(String(sesh.strengthRating))")
                     .font(.subheadline)
                 Spacer()
             }
