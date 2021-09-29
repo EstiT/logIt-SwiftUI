@@ -35,4 +35,15 @@ struct PersistenceController {
             }
         })
     }
+    
+    func getAllSessions() -> [Session] {
+        let fetchRequest: NSFetchRequest<Session> = Session.fetchRequest()
+
+        do {
+            return try container.viewContext.fetch(fetchRequest)
+        } catch {
+            print("Failed to fetch sessions: \(error)")
+            return []
+        }
+    }
 }

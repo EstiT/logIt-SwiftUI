@@ -7,13 +7,26 @@
 
 import CoreData
 import SwiftUI
-import SwiftUICharts
+import Charts
 
 struct ChartTabView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Session.date, ascending: true)],
         animation: .default)
     private var sessions: FetchedResults<Session>
+    
+    static func dataEntriesForYear(_ year: Int, sessions: [Session]) -> [ChartDataEntry] {
+        let yearSessions = sessions.filter {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy"
+            let seshYear = formatter.string(from: $0.date!)
+            return seshYear == String(year)
+        }
+        return yearSessions.enumerated().map{ChartDataEntry(x: Double($0), y: Double($1.strengthRating), data: $1)}
+    }
+    @State private var dates = ["1D", "1W", "1M", "6M", "1Y"]
+    @State private var selectedDate = "1Y"
+    
     
     
     var body: some View {
@@ -23,12 +36,21 @@ struct ChartTabView: View {
             GeometryReader { geometry in
                 
                 if sessions.count > 0 {
-                    MultiLineChartView(data: [
-                        (strengthArr, GradientColors.green),
-                        (sessionArr, GradientColors.bluPurpl)],
-                                       title: "",form: ChartForm.extraLarge,
-                                       rateValue: nil)
-                        .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                    let storageProvider = PersistenceController()
+                    let sessionsArr = storageProvider.getAllSessions()
+                    VStack{
+                        Picker("Please choose a date", selection: $selectedDate) {
+                            ForEach(dates, id: \.self) {
+                                Text($0)
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        
+                        //                    ChartView_previews.previews
+                        ChartView(entries: ChartTabView.dataEntriesForYear(2021, sessions: sessionsArr), selectedYear: .constant(2021))
+                    }
+                    
+                    
                 }
                 else {
                     HStack{

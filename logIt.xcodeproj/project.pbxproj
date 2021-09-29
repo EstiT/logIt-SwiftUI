@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		226ED49027047D6500A1622E /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 226ED48F27047D6500A1622E /* Charts */; };
+		226ED49727047E0300A1622E /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ED49627047E0300A1622E /* ChartView.swift */; };
 		22A6057A26FF50AC0063A73B /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6057926FF50AC0063A73B /* Tests_iOS.swift */; };
 		22A6058526FF50AC0063A73B /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6058426FF50AC0063A73B /* Tests_macOS.swift */; };
 		22A6058726FF50AC0063A73B /* logIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22A6055B26FF50A90063A73B /* logIt.xcdatamodeld */; };
@@ -54,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		226ED49627047E0300A1622E /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		22A6055C26FF50A90063A73B /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		22A6055D26FF50A90063A73B /* logItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logItApp.swift; sourceTree = "<group>"; };
 		22A6055E26FF50A90063A73B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226ED49027047D6500A1622E /* Charts in Frameworks */,
 				22AC1E8B2701CF9F00A6C1F8 /* AlertToast in Frameworks */,
 				22FB02032702EF7300EB7AA3 /* IQKeyboardManagerSwift in Frameworks */,
 				4ABB824426C42D350EA5D644 /* Pods_logIt__iOS_.framework in Frameworks */,
@@ -147,6 +151,7 @@
 				22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */,
 				22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */,
 				22FB02042702F10F00EB7AA3 /* AppDelegate.swift */,
+				226ED49627047E0300A1622E /* ChartView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 				22A605A62700856E0063A73B /* SwiftUICharts */,
 				22AC1E8A2701CF9F00A6C1F8 /* AlertToast */,
 				22FB02022702EF7300EB7AA3 /* IQKeyboardManagerSwift */,
+				226ED48F27047D6500A1622E /* Charts */,
 			);
 			productName = "logIt (iOS)";
 			productReference = 22A6056526FF50AB0063A73B /* logIt.app */;
@@ -335,6 +341,7 @@
 				22A605A52700856E0063A73B /* XCRemoteSwiftPackageReference "ChartView" */,
 				22AC1E892701CF9F00A6C1F8 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				22FB02012702EF7300EB7AA3 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				226ED48E27047D6500A1622E /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 22A6056626FF50AB0063A73B /* Products */;
 			projectDirPath = "";
@@ -436,6 +443,7 @@
 				22A6058726FF50AC0063A73B /* logIt.xcdatamodeld in Sources */,
 				22A6058D26FF50AC0063A73B /* Persistence.swift in Sources */,
 				22A6058926FF50AC0063A73B /* logItApp.swift in Sources */,
+				226ED49727047E0300A1622E /* ChartView.swift in Sources */,
 				22FB02052702F10F00EB7AA3 /* AppDelegate.swift in Sources */,
 				22AC1E902701DDE700A6C1F8 /* SeshRow.swift in Sources */,
 				22A605A326FF62D00063A73B /* ChartTabView.swift in Sources */,
@@ -843,6 +851,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		226ED48E27047D6500A1622E /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		22A605A52700856E0063A73B /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView";
@@ -870,6 +886,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		226ED48F27047D6500A1622E /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 226ED48E27047D6500A1622E /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
 		22A605A62700856E0063A73B /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 22A605A52700856E0063A73B /* XCRemoteSwiftPackageReference "ChartView" */;
