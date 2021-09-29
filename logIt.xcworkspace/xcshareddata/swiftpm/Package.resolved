@@ -20,12 +20,30 @@
         }
       },
       {
+        "package": "Highcharts",
+        "repositoryURL": "https://github.com/highcharts/highcharts-ios",
+        "state": {
+          "branch": null,
+          "revision": "a2906dbbf622f867fb79b89011394a349fefe437",
+          "version": "9.2.2"
+        }
+      },
+      {
         "package": "IQKeyboardManagerSwift",
         "repositoryURL": "https://github.com/hackiftekhar/IQKeyboardManager.git",
         "state": {
           "branch": null,
           "revision": "4dc6bc7d1c9747bd0c261c8c055903f9fdef91f7",
           "version": "6.5.6"
+        }
+      },
+      {
+        "package": "StockCharts",
+        "repositoryURL": "https://github.com/denniscm190/StockCharts.git",
+        "state": {
+          "branch": null,
+          "revision": "5a374cada5703ae6da1e11f1b28afed2cc96984c",
+          "version": "1.2.9"
         }
       }
     ]
