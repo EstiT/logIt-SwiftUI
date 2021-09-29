@@ -20,16 +20,24 @@ struct SeshList: View {
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
-                List {
-                    ForEach(sessions) { session in
-                        SeshRow(sesh: session)
-                    }.onDelete(perform: deleteItem)
+                if sessions.count > 0 {
+                    List {
+                        ForEach(sessions) { session in
+                            SeshRow(sesh: session)
+                        }.onDelete(perform: deleteItem)
+                    }
+                    .toast(isPresenting: $showFail){
+                        AlertToast(displayMode: .alert, type: .regular, title: "Failed to delete")
+                    }
                 }
-                .toast(isPresenting: $showFail){
-                    AlertToast(displayMode: .alert, type: .regular, title: "Failed to save")
+                else {
+                    HStack{
+                        Spacer()
+                        Text("Log sessions for them to appear here")
+                        Spacer()
+                    } .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
-                .navigationBarTitle("Session List")
-            }
+            }.navigationBarTitle("Session List")
         }
     }
     
@@ -44,7 +52,7 @@ struct SeshList: View {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
-
+        
         saveContext()
     }
     
