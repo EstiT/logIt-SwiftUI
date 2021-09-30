@@ -12,6 +12,7 @@ import Charts
 
 struct ChartView: UIViewRepresentable {
     let entries: [ChartDataEntry]
+    let entries2: [ChartDataEntry]
     @Binding var selectedYear: Int
     
     func makeUIView(context: Context) -> LineChartView {
@@ -20,26 +21,31 @@ struct ChartView: UIViewRepresentable {
     
     func updateUIView(_ uiView: LineChartView, context: Context) {
         let dataSet = LineChartDataSet(entries: entries)
+        let dataSet2 = LineChartDataSet(entries: entries2)
         uiView.rightAxis.enabled = false
         uiView.legend.enabled = false
 //        uiView.zoom(scaleX: 1.5, scaleY: 1, x: 0, y: 0)
+        let marker = PillMarker(color: .white, font: UIFont.boldSystemFont(ofSize: 14), textColor: .black)
+        uiView.marker = marker
         formatDataSet(dataSet: dataSet)
+        formatDataSet(dataSet: dataSet2)
+        dataSet2.colors = [.cyan]
+        dataSet2.label = "Session Rating"
         formatYAxis(yAxis: uiView.leftAxis)
         formatXAxis(xAxis: uiView.xAxis)
-//        formatLegend(legend: uiView.legend)
-        uiView.data = LineChartData(dataSet: dataSet)
+        formatLegend(legend: uiView.legend)
+        
+        uiView.data = LineChartData(dataSets:[dataSet, dataSet2])
     }
     
     func formatDataSet(dataSet: LineChartDataSet){
-//        dataSet.colors = [.green]
+        dataSet.colors = [.green]
 //        dataSet.drawCubicEnabled = true
-        dataSet.lineWidth = 2.0
-        dataSet.circleRadius = 4.0
+        dataSet.lineWidth = 3.0
+        dataSet.circleRadius = 8.0
         dataSet.drawValuesEnabled = false
-        dataSet.isDrawLineWithGradientEnabled = true
-        dataSet.colors = [UIColor(red: 0.192, green: 0.686, blue: 0.980, alpha: 1.00), UIColor(red: 0.212, green: 0.863, blue: 0.318, alpha: 1.00), UIColor(red: 0.996, green: 0.867, blue: 0.275, alpha: 1.00), UIColor(red: 0.980, green: 0.090, blue: 0.157, alpha: 1.00)]
-        dataSet.gradientPositions = [35.0, 36.6, 38.0, 40.0]
-        dataSet.label = ""
+        dataSet.drawCircleHoleEnabled = false
+        dataSet.label = "Strength Rating"
         let formatter = NumberFormatter()
         formatter.numberStyle = .none
         dataSet.mode = .horizontalBezier
@@ -66,7 +72,7 @@ struct ChartView: UIViewRepresentable {
         legend.horizontalAlignment = .right
         legend.verticalAlignment = .top
         legend.drawInside = true
-        legend.yOffset = 30
+        legend.yOffset = 40
     }
 }
 
@@ -77,6 +83,8 @@ struct ChartView_previews: PreviewProvider {
     static var previews: some View {
         let storageProvider = PersistenceController()
         let sessions = storageProvider.getAllSessions()
-        ChartView(entries: ChartTabView.dataEntriesForYear(2021, sessions: sessions), selectedYear: .constant(2021))
+        ChartView(entries: ChartTabView.dataEntriesForYear(2021, sessions: sessions, strength: true),
+                  entries2: ChartTabView.dataEntriesForYear(2021, sessions: sessions, strength: false),
+                  selectedYear: .constant(2021))
     }
 }

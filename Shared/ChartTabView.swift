@@ -15,14 +15,16 @@ struct ChartTabView: View {
         animation: .default)
     private var sessions: FetchedResults<Session>
     
-    static func dataEntriesForYear(_ year: Int, sessions: [Session]) -> [ChartDataEntry] {
+    static func dataEntriesForYear(_ year: Int, sessions: [Session], strength: Bool) -> [ChartDataEntry] {
         let yearSessions = sessions.filter {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy"
             let seshYear = formatter.string(from: $0.date!)
             return seshYear == String(year)
         }
-        return yearSessions.enumerated().map{ChartDataEntry(x: Double($0), y: Double($1.strengthRating), data: $1)}
+       
+        return yearSessions.enumerated().map{ChartDataEntry(x: Double($0),
+                                                            y: Double(strength ? $1.strengthRating : $1.sessionRating), data: $1)}
     }
     @State private var dates = ["1D", "1W", "1M", "6M", "1Y"]
     @State private var selectedDate = "1Y"
@@ -47,7 +49,7 @@ struct ChartTabView: View {
                         .pickerStyle(SegmentedPickerStyle())
                         
                         //                    ChartView_previews.previews
-                        ChartView(entries: ChartTabView.dataEntriesForYear(2021, sessions: sessionsArr), selectedYear: .constant(2021))
+                        ChartView(entries: ChartTabView.dataEntriesForYear(2021, sessions: sessionsArr, strength: true), entries2: ChartTabView.dataEntriesForYear(2021, sessions: sessionsArr, strength: false), selectedYear: .constant(2021))
                     }
                     
                     
