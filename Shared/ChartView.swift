@@ -32,27 +32,28 @@ struct ChartView: UIViewRepresentable {
     
     func formatDataSet(dataSet: LineChartDataSet){
 //        dataSet.colors = [.green]
-        dataSet.cubicIntensity = 0.4
 //        dataSet.drawCubicEnabled = true
         dataSet.lineWidth = 2.0
-        dataSet.circleRadius = 2.0
+        dataSet.circleRadius = 4.0
+        dataSet.drawValuesEnabled = false
         dataSet.isDrawLineWithGradientEnabled = true
         dataSet.colors = [UIColor(red: 0.192, green: 0.686, blue: 0.980, alpha: 1.00), UIColor(red: 0.212, green: 0.863, blue: 0.318, alpha: 1.00), UIColor(red: 0.996, green: 0.867, blue: 0.275, alpha: 1.00), UIColor(red: 0.980, green: 0.090, blue: 0.157, alpha: 1.00)]
         dataSet.gradientPositions = [35.0, 36.6, 38.0, 40.0]
         dataSet.label = ""
         let formatter = NumberFormatter()
         formatter.numberStyle = .none
+        dataSet.mode = .horizontalBezier
         dataSet.valueFormatter = DefaultValueFormatter(formatter: formatter)
     }
     
     func formatYAxis(yAxis: YAxis){
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = .none
-//        yAxis.valueFormatter = DefaultAxisValueFormatter(formatter: formatter)
-//        yAxis.axisMinimum = 0
-//        yAxis.axisMaximum = 5
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .none
+        yAxis.valueFormatter = DefaultAxisValueFormatter(formatter: formatter)
+        yAxis.axisMinimum = 0
+        yAxis.axisMaximum = 5
         yAxis.drawGridLinesEnabled = false
-        yAxis.enabled = false
+        yAxis.granularity = 1.0
     }
     
     func formatXAxis(xAxis: XAxis){
