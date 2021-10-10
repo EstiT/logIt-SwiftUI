@@ -29,6 +29,8 @@
 		22AC1E8E2701DB5D00A6C1F8 /* SeshList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */; };
 		22AC1E902701DDE700A6C1F8 /* SeshRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */; };
 		22AC1E912701DDE700A6C1F8 /* SeshRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */; };
+		22B246812712C6B5003FD50C /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B246802712C6B5003FD50C /* ChartView.swift */; };
+		22B246822712C6B5003FD50C /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B246802712C6B5003FD50C /* ChartView.swift */; };
 		22FB02032702EF7300EB7AA3 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22FB02022702EF7300EB7AA3 /* IQKeyboardManagerSwift */; };
 		22FB02052702F10F00EB7AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB02042702F10F00EB7AA3 /* AppDelegate.swift */; };
 		22FB02062702F10F00EB7AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB02042702F10F00EB7AA3 /* AppDelegate.swift */; };
@@ -74,6 +76,7 @@
 		22A605A226FF62D00063A73B /* ChartTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTabView.swift; sourceTree = "<group>"; };
 		22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeshList.swift; sourceTree = "<group>"; };
 		22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeshRow.swift; sourceTree = "<group>"; };
+		22B246802712C6B5003FD50C /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		22FB02042702F10F00EB7AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6701DEA644B147E7DC4673AC /* Pods_logIt__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_logIt__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E94B66C9BE723D79FB5CB42 /* Pods-logIt (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-logIt (iOS).debug.xcconfig"; path = "Target Support Files/Pods-logIt (iOS)/Pods-logIt (iOS).debug.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 				22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */,
 				22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */,
 				22FB02042702F10F00EB7AA3 /* AppDelegate.swift */,
+				22B246802712C6B5003FD50C /* ChartView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -228,6 +232,7 @@
 				22A6056126FF50AB0063A73B /* Sources */,
 				22A6056226FF50AB0063A73B /* Frameworks */,
 				22A6056326FF50AB0063A73B /* Resources */,
+				3FC746DF7A5D734618B526A5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -382,6 +387,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3FC746DF7A5D734618B526A5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-logIt (iOS)/Pods-logIt (iOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-logIt (iOS)/Pods-logIt (iOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-logIt (iOS)/Pods-logIt (iOS)-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AB7741E208486565323B060B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,6 +458,7 @@
 				22A6058726FF50AC0063A73B /* logIt.xcdatamodeld in Sources */,
 				22A6058D26FF50AC0063A73B /* Persistence.swift in Sources */,
 				22A6058926FF50AC0063A73B /* logItApp.swift in Sources */,
+				22B246812712C6B5003FD50C /* ChartView.swift in Sources */,
 				22FB02052702F10F00EB7AA3 /* AppDelegate.swift in Sources */,
 				22AC1E902701DDE700A6C1F8 /* SeshRow.swift in Sources */,
 				22A605A326FF62D00063A73B /* ChartTabView.swift in Sources */,
@@ -452,6 +475,7 @@
 				22A6058826FF50AC0063A73B /* logIt.xcdatamodeld in Sources */,
 				22A6058E26FF50AC0063A73B /* Persistence.swift in Sources */,
 				22A6058A26FF50AC0063A73B /* logItApp.swift in Sources */,
+				22B246822712C6B5003FD50C /* ChartView.swift in Sources */,
 				22FB02062702F10F00EB7AA3 /* AppDelegate.swift in Sources */,
 				22AC1E912701DDE700A6C1F8 /* SeshRow.swift in Sources */,
 				22A605A426FF62D00063A73B /* ChartTabView.swift in Sources */,

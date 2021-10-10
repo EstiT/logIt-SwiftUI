@@ -4,8 +4,8 @@
 target 'logIt (iOS)' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
   # Pods for logIt (iOS)
+  pod 'SwiftCharts', '~> 0.6.5'
 end
 
 target 'logIt (macOS)' do
