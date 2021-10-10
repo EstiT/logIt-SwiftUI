@@ -16,14 +16,16 @@ struct ChartTabView: View {
     
     
     var body: some View {
-        let strengthArr = sessions.map{Double($0.strengthRating)/5*100}
-        let sessionArr = sessions.map{Double($0.sessionRating)/5*100}
+//        let strengthArr = sessions.map{Double($0.strengthRating)/5*100}
+//        let sessionArr = sessions.map{Double($0.sessionRating)/5*100}
         NavigationView {
             GeometryReader { geometry in
                 
                 if sessions.count > 0 {
-                    ChartView()
+                    let storageProvider = PersistenceController()
+                    let sessionsArr = storageProvider.getAllSessions()
 
+                    ChartView(sessions: sessionsArr).frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
                 else {
                     HStack{
