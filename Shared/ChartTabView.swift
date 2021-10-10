@@ -7,7 +7,6 @@
 
 import CoreData
 import SwiftUI
-import SwiftUICharts
 
 struct ChartTabView: View {
     @FetchRequest(
@@ -23,12 +22,8 @@ struct ChartTabView: View {
             GeometryReader { geometry in
                 
                 if sessions.count > 0 {
-                    MultiLineChartView(data: [
-                        (strengthArr, GradientColors.green),
-                        (sessionArr, GradientColors.bluPurpl)],
-                                       title: "",form: ChartForm.extraLarge,
-                                       rateValue: nil)
-                        .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                    ChartView()
+
                 }
                 else {
                     HStack{
