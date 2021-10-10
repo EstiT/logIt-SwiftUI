@@ -10,6 +10,8 @@
 		226ED49027047D6500A1622E /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 226ED48F27047D6500A1622E /* Charts */; };
 		226ED49727047E0300A1622E /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ED49627047E0300A1622E /* ChartView.swift */; };
 		226ED499270577CB00A1622E /* PillMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ED498270577CB00A1622E /* PillMarker.swift */; };
+		226ED49D2706CC7800A1622E /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ED49C2706CC7800A1622E /* BalloonMarker.swift */; };
+		226ED49F2706D1BD00A1622E /* ChartXAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ED49E2706D1BD00A1622E /* ChartXAxisFormatter.swift */; };
 		22A6057A26FF50AC0063A73B /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6057926FF50AC0063A73B /* Tests_iOS.swift */; };
 		22A6058526FF50AC0063A73B /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6058426FF50AC0063A73B /* Tests_macOS.swift */; };
 		22A6058726FF50AC0063A73B /* logIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22A6055B26FF50A90063A73B /* logIt.xcdatamodeld */; };
@@ -59,6 +61,8 @@
 /* Begin PBXFileReference section */
 		226ED49627047E0300A1622E /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		226ED498270577CB00A1622E /* PillMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillMarker.swift; sourceTree = "<group>"; };
+		226ED49C2706CC7800A1622E /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		226ED49E2706D1BD00A1622E /* ChartXAxisFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartXAxisFormatter.swift; sourceTree = "<group>"; };
 		22A6055C26FF50A90063A73B /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		22A6055D26FF50A90063A73B /* logItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logItApp.swift; sourceTree = "<group>"; };
 		22A6055E26FF50A90063A73B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				22FB02042702F10F00EB7AA3 /* AppDelegate.swift */,
 				226ED49627047E0300A1622E /* ChartView.swift */,
 				226ED498270577CB00A1622E /* PillMarker.swift */,
+				226ED49C2706CC7800A1622E /* BalloonMarker.swift */,
+				226ED49E2706D1BD00A1622E /* ChartXAxisFormatter.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -445,11 +451,13 @@
 			files = (
 				22A6058726FF50AC0063A73B /* logIt.xcdatamodeld in Sources */,
 				22A6058D26FF50AC0063A73B /* Persistence.swift in Sources */,
+				226ED49D2706CC7800A1622E /* BalloonMarker.swift in Sources */,
 				22A6058926FF50AC0063A73B /* logItApp.swift in Sources */,
 				226ED49727047E0300A1622E /* ChartView.swift in Sources */,
 				22FB02052702F10F00EB7AA3 /* AppDelegate.swift in Sources */,
 				22AC1E902701DDE700A6C1F8 /* SeshRow.swift in Sources */,
 				22A605A326FF62D00063A73B /* ChartTabView.swift in Sources */,
+				226ED49F2706D1BD00A1622E /* ChartXAxisFormatter.swift in Sources */,
 				22AC1E8D2701DB5D00A6C1F8 /* SeshList.swift in Sources */,
 				22A6058B26FF50AC0063A73B /* ContentView.swift in Sources */,
 				22A605A026FF575B0063A73B /* LogTabView.swift in Sources */,

@@ -15,31 +15,35 @@ struct ChartTabView: View {
         animation: .default)
     private var sessions: FetchedResults<Session>
     
-    static func dataEntriesForYear(_ year: Int, sessions: [Session], strength: Bool) -> [ChartDataEntry] {
-        let yearSessions = sessions.filter {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy"
-            let seshYear = formatter.string(from: $0.date!)
-            return seshYear == String(year)
+    static func dataEntries(strength: Bool) -> [ChartDataEntry] {
+        let storageProvider = PersistenceController()
+        let sessions = storageProvider.getAllSessions()
+        let now = Date().timeIntervalSince1970
+        let hourSeconds: TimeInterval = 3600
+        
+        let count = 30 // todo change
+        let range = UInt32(30) // todo change
+        
+        let from = now - (Double(count) / 2) * hourSeconds
+        let to = now + (Double(count) / 2) * hourSeconds
+        
+        let values = stride(from: from, to: to, by: hourSeconds).map { (x) -> ChartDataEntry in
+            let y = arc4random_uniform(range) + 50
+            return ChartDataEntry(x: x, y: Double(y))
         }
-       
-        return yearSessions.enumerated().map{ChartDataEntry(x: Double($0),
-                                                            y: Double(strength ? $1.strengthRating : $1.sessionRating), data: $1)}
+        
+        return values
     }
+    
     @State private var dates = ["1D", "1W", "1M", "6M", "1Y"]
     @State private var selectedDate = "1Y"
     
-    
-    
     var body: some View {
-        let strengthArr = sessions.map{Double($0.strengthRating)/5*100}
-        let sessionArr = sessions.map{Double($0.sessionRating)/5*100}
+
         NavigationView {
             GeometryReader { geometry in
                 
                 if sessions.count > 0 {
-                    let storageProvider = PersistenceController()
-                    let sessionsArr = storageProvider.getAllSessions()
                     VStack{
                         Picker("Please choose a date", selection: $selectedDate) {
                             ForEach(dates, id: \.self) {
@@ -47,12 +51,8 @@ struct ChartTabView: View {
                             }
                         }
                         .pickerStyle(SegmentedPickerStyle())
-                        
-                        //                    ChartView_previews.previews
-                        ChartView(entries: ChartTabView.dataEntriesForYear(2021, sessions: sessionsArr, strength: true), entries2: ChartTabView.dataEntriesForYear(2021, sessions: sessionsArr, strength: false), selectedYear: .constant(2021))
+                        ChartView(entries: ChartTabView.dataEntries(strength: true), entries2: ChartTabView.dataEntries(strength: false), selectedZoom: .constant(2021))
                     }
-                    
-                    
                 }
                 else {
                     HStack{
