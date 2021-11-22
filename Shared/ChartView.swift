@@ -21,46 +21,47 @@ struct ChartView: UIViewRepresentable {
         let chartSettings = createChartSettings()
         let labelSettings = chartLabelSettings()
         
-        let chartPoints1 = makeChartPoints(sessions: sessions, strength: true)
-        let chartPoints2 = makeChartPoints(sessions: sessions, strength: false)
+        let strengthDataPoints = makeChartPoints(sessions: sessions, strength: true)
+        let sessionDataPoints = makeChartPoints(sessions: sessions, strength: false)
         
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "MMMM dd, yyyy" // h a ?
-        let xAxisValues = ChartAxisValuesStaticGenerator.generateXAxisValuesWithChartPoints(chartPoints1, minSegmentCount: 5, maxSegmentCount: 10, multiple: TimeInterval(60 * 60), axisValueGenerator: { ChartAxisValueDate(date: ChartAxisValueDate.dateFromScalar($0), formatter: timeFormatter, labelSettings: labelSettings)
-            }, addPaddingSegmentIfEdge: false)
-        
-        let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints1, minSegmentCount: 10, maxSegmentCount: 20, multiple: 2, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelSettings)}, addPaddingSegmentIfEdge: false)
-        
-        
-        let xModel = ChartAxisModel(axisValues: xAxisValues, axisTitleLabel: ChartAxisLabel(text: "Axis title", settings: labelSettings))
-        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "Axis title", settings: labelSettings.defaultVertical()))
+        if strengthDataPoints.count > 0 && sessionDataPoints.count > 0 {
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "MMMM dd, yyyy" // h a ?
+            let xAxisValues = ChartAxisValuesStaticGenerator.generateXAxisValuesWithChartPoints(strengthDataPoints, minSegmentCount: 5, maxSegmentCount: 10, multiple: TimeInterval(60 * 60), axisValueGenerator: { ChartAxisValueDate(date: ChartAxisValueDate.dateFromScalar($0), formatter: timeFormatter, labelSettings: labelSettings)
+                }, addPaddingSegmentIfEdge: false)
+            
+            let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(strengthDataPoints, minSegmentCount: 10, maxSegmentCount: 20, multiple: 2, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelSettings)}, addPaddingSegmentIfEdge: false)
+            
+            
+            let xModel = ChartAxisModel(axisValues: xAxisValues, axisTitleLabel: ChartAxisLabel(text: "Axis title", settings: labelSettings))
+            let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "Axis title", settings: labelSettings.defaultVertical()))
 
-        let top: CGFloat = 80
-        let chartFrame = CGRect(x: 0, y: top, width: 400, height: 500)
+            let top: CGFloat = 80
+            let chartFrame = CGRect(x: 0, y: top, width: 400, height: 500)
 
-        let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
-        let (xAxisLayer, yAxisLayer, innerFrame) = (coordsSpace.xAxisLayer, coordsSpace.yAxisLayer, coordsSpace.chartInnerFrame)
-        
-        let lineModel1 = ChartLineModel(chartPoints: chartPoints1, lineColors: [UIColor.blue, UIColor.purple], lineWidth: 2, animDuration: 1, animDelay: 0)
-        let lineModel2 = ChartLineModel(chartPoints: chartPoints2, lineColors: [UIColor.red, UIColor.yellow], lineWidth: 2, animDuration: 1, animDelay: 1)
-        let chartPointsLineLayer = ChartPointsLineLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lineModels: [lineModel1, lineModel2], pathGenerator: CatmullPathGenerator()) // || CubicLinePathGenerator
-        
-        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth:  0.1)
-        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
-        
-        let chart = Chart(
-            frame: chartFrame,
-            innerFrame: innerFrame,
-            settings: chartSettings,
-            layers: [
-                xAxisLayer,
-                yAxisLayer,
-                guidelinesLayer,
-                chartPointsLineLayer
-            ]
-        )
-                
-        uiView.addSubview(chart.view)
+            let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
+            let (xAxisLayer, yAxisLayer, innerFrame) = (coordsSpace.xAxisLayer, coordsSpace.yAxisLayer, coordsSpace.chartInnerFrame)
+            
+            let lineModel1 = ChartLineModel(chartPoints: strengthDataPoints, lineColors: [UIColor.blue, UIColor.purple], lineWidth: 2, animDuration: 1, animDelay: 0)
+            let lineModel2 = ChartLineModel(chartPoints: sessionDataPoints, lineColors: [UIColor.red, UIColor.yellow], lineWidth: 2, animDuration: 1, animDelay: 1)
+            let chartPointsLineLayer = ChartPointsLineLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lineModels: [lineModel1, lineModel2], pathGenerator: CatmullPathGenerator()) // || CubicLinePathGenerator
+            
+            let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth:  0.1)
+            let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
+            
+            let chart = Chart(
+                frame: chartFrame,
+                innerFrame: innerFrame,
+                settings: chartSettings,
+                layers: [
+                    xAxisLayer,
+                    yAxisLayer,
+                    guidelinesLayer,
+                    chartPointsLineLayer
+                ]
+            )
+            uiView.addSubview(chart.view)
+        }
     }
 }
 
@@ -113,7 +114,8 @@ func chartLabelSettings() -> ChartLabelSettings {
 }
 
 func makeChartPoints(sessions: [Session], strength: Bool) -> [ChartPoint] {
-    return sessions.map{
+    let points = sessions.filter { $0.date != nil }.map{
         ChartPoint(x: ChartAxisValueDate(date: $0.date!, formatter: dateFormatter), y: ChartAxisValueInt(Int(strength ? $0.strengthRating : $0.sessionRating)))
     }
+    return points
 }
