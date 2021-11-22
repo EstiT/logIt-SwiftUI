@@ -39,6 +39,8 @@ struct PersistenceController {
     func getAllSessions() -> [Session] {
         let fetchRequest: NSFetchRequest<Session> = Session.fetchRequest()
 
+        let dateSort = NSSortDescriptor(keyPath: \Session.date, ascending: true)
+        fetchRequest.sortDescriptors = [dateSort]
         do {
             return try container.viewContext.fetch(fetchRequest)
         } catch {
