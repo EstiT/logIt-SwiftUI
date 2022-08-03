@@ -60,6 +60,7 @@ struct ChartView: UIViewRepresentable {
                     chartPointsLineLayer
                 ]
             )
+            uiView.subviews.forEach({ $0.removeFromSuperview() })
             uiView.addSubview(chart.view)
         }
     }
