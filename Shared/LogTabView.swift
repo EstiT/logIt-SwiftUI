@@ -77,11 +77,20 @@ struct LogTabView: View {
         do {
             try viewContext.save()
             showSuccess.toggle()
+            clearForm()
         } catch {
             showFail.toggle()
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
+    }
+    
+    
+    private func clearForm() {
+        note = "Notes"
+        strengthIndex = 2
+        sessionIndex = 2
+        selectedDate = Date()
     }
 }
 
