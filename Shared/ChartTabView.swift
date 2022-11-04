@@ -7,7 +7,7 @@
 
 import CoreData
 import SwiftUI
-import SwiftUICharts
+import Charts
 
 struct ChartTabView: View {
     @FetchRequest(
@@ -17,18 +17,46 @@ struct ChartTabView: View {
     
     
     var body: some View {
-        let strengthArr = sessions.map{Double($0.strengthRating)/5*100}
-        let sessionArr = sessions.map{Double($0.sessionRating)/5*100}
+//        let strengthArr = sessions.map{Double($0.strengthRating)/5*100}
+//        let sessionArr = sessions.map{Double($0.sessionRating)/5*100}
         NavigationView {
             GeometryReader { geometry in
                 
                 if sessions.count > 0 {
-                    MultiLineChartView(data: [
-                        (strengthArr, GradientColors.green),
-                        (sessionArr, GradientColors.bluPurpl)],
-                                       title: "",form: ChartForm.extraLarge,
-                                       rateValue: nil)
-                        .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                    Chart {
+                        ForEach(sessions) { session in
+                            LineMark(
+                                x: .value("Date", session.date!),
+                                y: .value("Session Rating", session.sessionRating),
+                                series: .value("Session", "Session")
+                            )
+                            .interpolationMethod(.monotone)
+                            .foregroundStyle(.blue)
+                            
+                            PointMark(
+                                x: .value("Date", session.date!),
+                                y: .value("Session Rating", session.sessionRating)
+                            )
+                            .foregroundStyle(by: .value("injured", session.injured ? "Injured" : "Not Injured"))
+                        }
+                        
+                        ForEach(sessions) { session in
+                            LineMark(
+                                x: .value("Date", session.date!),
+                                y: .value("Strength Rating", session.strengthRating),
+                                series: .value("Strength", "Strength")
+                            )
+                            .foregroundStyle(.purple)
+                            .interpolationMethod(.monotone)
+                            
+
+                            PointMark(
+                                x: .value("Date", session.date!),
+                                y: .value("Strength Rating", session.strengthRating)
+                            )
+                            .foregroundStyle(by: .value("injured", session.injured ? "Injured" : "Not Injured"))
+                        }
+                    }
                 }
                 else {
                     HStack{
