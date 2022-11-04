@@ -30,14 +30,14 @@ struct ChartTabView: View {
                                 y: .value("Session Rating", session.sessionRating),
                                 series: .value("Session", "Session")
                             )
-                            .interpolationMethod(.monotone)
-                            .foregroundStyle(.blue)
-                            
+                            .interpolationMethod(.catmullRom)
+                            .foregroundStyle(by: .value("Session", "Session"))
                             PointMark(
                                 x: .value("Date", session.date!),
                                 y: .value("Session Rating", session.sessionRating)
                             )
-                            .foregroundStyle(by: .value("injured", session.injured ? "Injured" : "Not Injured"))
+                            .symbolSize(20)
+                            .foregroundStyle(session.injured ? .red : .blue)
                         }
                         
                         ForEach(sessions) { session in
@@ -46,15 +46,16 @@ struct ChartTabView: View {
                                 y: .value("Strength Rating", session.strengthRating),
                                 series: .value("Strength", "Strength")
                             )
-                            .foregroundStyle(.purple)
-                            .interpolationMethod(.monotone)
+                            .foregroundStyle(by: .value("Strength", "Strength"))
+                            .interpolationMethod(.catmullRom)
                             
 
                             PointMark(
                                 x: .value("Date", session.date!),
                                 y: .value("Strength Rating", session.strengthRating)
                             )
-                            .foregroundStyle(by: .value("injured", session.injured ? "Injured" : "Not Injured"))
+                            .symbolSize(20)
+                            .foregroundStyle(session.injured ? .red : .green)
                         }
                     }
                 }
