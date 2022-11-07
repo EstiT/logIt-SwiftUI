@@ -29,12 +29,12 @@ struct LogTabView: View {
                     
                     Section(header: Text("Ratings")){
                         Picker(selection: $strengthIndex, label: Text("Strength Rating")) {
-                            ForEach(0 ..< strengthOptions.count) {
+                            ForEach(0 ..< strengthOptions.count, id: \.self) {
                                 Text(self.strengthOptions[$0])
                             }
                         }
                         Picker(selection: $sessionIndex, label: Text("Session Rating")) {
-                            ForEach(0 ..< sessionOptions.count) {
+                            ForEach(0 ..< sessionOptions.count, id: \.self) {
                                 Text(self.sessionOptions[$0])
                             }
                         }

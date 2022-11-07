@@ -10,27 +10,6 @@ import SwiftUI
 import Charts
 
 
-enum SwipeHVDirection: String {
-    case left, right, up, down, none
-}
-
-func detectDirection(value: DragGesture.Value) -> SwipeHVDirection {
-    if value.startLocation.x < value.location.x - 24 {
-        return .left
-    }
-    if value.startLocation.x > value.location.x + 24 {
-        return .right
-    }
-    if value.startLocation.y < value.location.y - 24 {
-        return .down
-    }
-    if value.startLocation.y > value.location.y + 24 {
-        return .up
-    }
-    return .none
-}
-
-
 var date: Date {
     get {
         let dateFormatter = ISO8601DateFormatter()
@@ -40,18 +19,15 @@ var date: Date {
 
 struct ChartTabView: View {
     
-    @State var domain: ClosedRange<Date> = date...Date()
+    @State var domain: ClosedRange<Date> = date...Date.now
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Session.date, ascending: true)],
         animation: .default)
     private var sessions: FetchedResults<Session>
     
-    
     var body: some View {
-        
         NavigationView {
             GeometryReader { geometry in
-                
                 if sessions.count > 0 {
                     Text(domain)
                     Chart {
@@ -67,7 +43,7 @@ struct ChartTabView: View {
                                 x: .value("Date", session.date!),
                                 y: .value("Session Rating", session.sessionRating)
                             )
-                            .symbolSize(20)
+                            .symbolSize(25)
                             .foregroundStyle(session.injured ? .red : .blue)
                         }
                         
@@ -85,7 +61,7 @@ struct ChartTabView: View {
                                 x: .value("Date", session.date!),
                                 y: .value("Strength Rating", session.strengthRating)
                             )
-                            .symbolSize(20)
+                            .symbolSize(25)
                             .foregroundStyle(session.injured ? .red : .green)
                         }
                     }
@@ -95,21 +71,21 @@ struct ChartTabView: View {
                                 .gesture(
                                     DragGesture()
                                         .onChanged { value in
-                                            var delta = 0
-                                            
-                                            let direction = detectDirection(value: value)
-                                            if direction == .left {
-                                                delta = -2
-                                            } else if direction == .right {
-                                                delta = 2
+                                            let xStart = (value.startLocation.x - geometry[proxy.plotAreaFrame].origin.x) / 5
+                                            let xCurrent = (value.location.x - geometry[proxy.plotAreaFrame].origin.x) / 5
+                                            if let dateStart: Date = proxy.value(atX: xStart),
+                                               let dateCurrent: Date = proxy.value(atX: xCurrent) {
+                                                let delta = Calendar.current.dateComponents([.year, .month, .day], from: dateCurrent , to: dateStart)
+                                                
+                                                if let day = delta.day {
+                                                    let newStart = Calendar.current.date(byAdding: delta, to: domain.lowerBound)!
+                                                    let newEnd = Calendar.current.date(byAdding: delta, to: domain.upperBound)!
+                                                    
+                                                    if day != 0 && newStart >= sessions[0].date! && newEnd <= sessions[sessions.count-1].date! {
+                                                        domain = newStart...newEnd
+                                                    }
+                                                }
                                             }
-                                            
-                                            var dayComponent = DateComponents()
-                                            dayComponent.day = delta
-                                            
-                                            let newStart = Calendar.current.date(byAdding: dayComponent, to: domain.lowerBound)
-                                            let newEnd = Calendar.current.date(byAdding: dayComponent, to: domain.upperBound)
-                                            domain = newStart!...newEnd!
                                         }
                                 )
                         }
@@ -124,6 +100,11 @@ struct ChartTabView: View {
                     } .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
             } .navigationBarTitle("Trends")
+                .onAppear() {
+                    if sessions.count > 0{
+                        self.domain = date...sessions[sessions.count-1].date!
+                    }
+                }
         }
     }
 }
