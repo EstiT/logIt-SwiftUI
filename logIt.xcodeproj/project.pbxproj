@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22A132F7291642F500CCFBD1 /* DomainGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 22A132F6291642F500CCFBD1 /* DomainGesture */; };
 		22A6057A26FF50AC0063A73B /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6057926FF50AC0063A73B /* Tests_iOS.swift */; };
 		22A6058526FF50AC0063A73B /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6058426FF50AC0063A73B /* Tests_macOS.swift */; };
 		22A6058726FF50AC0063A73B /* logIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22A6055B26FF50A90063A73B /* logIt.xcdatamodeld */; };
@@ -92,6 +93,7 @@
 				22FB02032702EF7300EB7AA3 /* IQKeyboardManagerSwift in Frameworks */,
 				4ABB824426C42D350EA5D644 /* Pods_logIt__iOS_.framework in Frameworks */,
 				22A605A72700856E0063A73B /* SwiftUICharts in Frameworks */,
+				22A132F7291642F500CCFBD1 /* DomainGesture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +240,7 @@
 				22A605A62700856E0063A73B /* SwiftUICharts */,
 				22AC1E8A2701CF9F00A6C1F8 /* AlertToast */,
 				22FB02022702EF7300EB7AA3 /* IQKeyboardManagerSwift */,
+				22A132F6291642F500CCFBD1 /* DomainGesture */,
 			);
 			productName = "logIt (iOS)";
 			productReference = 22A6056526FF50AB0063A73B /* logIt.app */;
@@ -335,6 +338,7 @@
 				22A605A52700856E0063A73B /* XCRemoteSwiftPackageReference "ChartView" */,
 				22AC1E892701CF9F00A6C1F8 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				22FB02012702EF7300EB7AA3 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				22A132F5291642F500CCFBD1 /* XCRemoteSwiftPackageReference "domain-gesture" */,
 			);
 			productRefGroup = 22A6056626FF50AB0063A73B /* Products */;
 			projectDirPath = "";
@@ -847,6 +851,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		22A132F5291642F500CCFBD1 /* XCRemoteSwiftPackageReference "domain-gesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/levitatingpineapple/domain-gesture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		22A605A52700856E0063A73B /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView";
@@ -874,6 +886,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		22A132F6291642F500CCFBD1 /* DomainGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22A132F5291642F500CCFBD1 /* XCRemoteSwiftPackageReference "domain-gesture" */;
+			productName = DomainGesture;
+		};
 		22A605A62700856E0063A73B /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 22A605A52700856E0063A73B /* XCRemoteSwiftPackageReference "ChartView" */;

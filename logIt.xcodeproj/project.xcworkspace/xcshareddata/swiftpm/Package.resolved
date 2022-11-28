@@ -6,7 +6,7 @@
       "location" : "https://github.com/elai950/AlertToast.git",
       "state" : {
         "branch" : "master",
-        "revision" : "a05db1fed0a518465a86b69a6aed8a2618516f95"
+        "revision" : "a437862bb6605080a5816e866cbd4ac8c8657b49"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hackiftekhar/IQKeyboardManager.git",
       "state" : {
-        "revision" : "4dc6bc7d1c9747bd0c261c8c055903f9fdef91f7",
-        "version" : "6.5.6"
+        "revision" : "9ab144a1a6c6ae8dad25840610c072709b15d8b5",
+        "version" : "6.5.10"
       }
     }
   ],

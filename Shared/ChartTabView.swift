@@ -17,8 +17,120 @@ var date: Date {
     }
 }
 
-struct ChartTabView: View {
+struct SessionChart: View {
+    @Binding var selectedElement: (date: Date, notes: String)?
+    var sessions: FetchedResults<Session>
+    @Binding var domain: ClosedRange<Date>
     
+    
+    func findElement(location: CGPoint, proxy: ChartProxy, geometry: GeometryProxy) -> (date: Date?, notes: String?)? {
+        let relativeXPosition = location.x - geometry[proxy.plotAreaFrame].origin.x
+        if let date = proxy.value(atX: relativeXPosition) as Date? {
+            // Find the closest date element.
+            var minDistance: TimeInterval = .infinity
+            var index: Int? = nil
+            for sessionIndex in sessions.indices {
+                let nthSalesDataDistance = sessions[sessionIndex].date!.distance(to: date)
+                if abs(nthSalesDataDistance) < minDistance {
+                    minDistance = abs(nthSalesDataDistance)
+                    index = sessionIndex
+                }
+            }
+            if let index = index {
+                let notes = sessions[index].notes == "Notes" ? "" : sessions[index].notes
+                let el = (date: sessions[index].date, notes: notes)
+                return el
+            }
+        }
+        return nil
+    }
+
+    var body: some View {
+        Chart {
+            ForEach(sessions) { session in
+                LineMark(
+                    x: .value("Date", session.date!),
+                    y: .value("Session Rating", session.sessionRating),
+                    series: .value("Session", "Session")
+                )
+                .interpolationMethod(.catmullRom)
+                .foregroundStyle(by: .value("Session", "Session"))
+                PointMark(
+                    x: .value("Date", session.date!),
+                    y: .value("Session Rating", session.sessionRating)
+                )
+                .symbolSize(25)
+                .foregroundStyle(session.injured ? .red : .blue)
+            }
+            
+            ForEach(sessions) { session in
+                LineMark(
+                    x: .value("Date", session.date!),
+                    y: .value("Strength Rating", session.strengthRating),
+                    series: .value("Strength", "Strength")
+                )
+                .foregroundStyle(by: .value("Strength", "Strength"))
+                .interpolationMethod(.catmullRom)
+                
+                
+                PointMark(
+                    x: .value("Date", session.date!),
+                    y: .value("Strength Rating", session.strengthRating)
+                )
+                .symbolSize(25)
+                .foregroundStyle(session.injured ? .red : .green)
+            }
+        }
+        .chartOverlay { proxy in
+            GeometryReader { geometry in
+                Rectangle().fill(.clear).contentShape(Rectangle())
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                let xStart = (value.startLocation.x - geometry[proxy.plotAreaFrame].origin.x) / 5
+                                let xCurrent = (value.location.x - geometry[proxy.plotAreaFrame].origin.x) / 5
+                                if let dateStart: Date = proxy.value(atX: xStart),
+                                   let dateCurrent: Date = proxy.value(atX: xCurrent) {
+                                    let delta = Calendar.current.dateComponents([.year, .month, .day], from: dateCurrent , to: dateStart)
+                                    
+                                    if let day = delta.day {
+                                        let newStart = Calendar.current.date(byAdding: delta, to: domain.lowerBound)!
+                                        let newEnd = Calendar.current.date(byAdding: delta, to: domain.upperBound)!
+                                        
+                                        if day != 0 && newStart >= sessions[0].date! && newEnd <= sessions[sessions.count-1].date! {
+                                            domain = newStart...newEnd
+                                        }
+                                    }
+                                }
+                            }
+                    )
+                    .gesture(
+                        SpatialTapGesture()
+                            .onEnded { value in
+                                let element = findElement(location: value.location, proxy: proxy, geometry: geometry)
+                                if selectedElement?.date == element?.date {
+                                    // If tapping the same element, clear the selection.
+                                    selectedElement = nil
+                                } else {
+                                    selectedElement = element as? (date: Date, notes: String)
+                                }
+                                print("\(String(describing: selectedElement))")
+                            }
+                            .exclusively(
+                                before: DragGesture()
+                                    .onChanged { value in
+                                        selectedElement = findElement(location: value.location, proxy: proxy, geometry: geometry) as? (date: Date, notes: String)
+                                    }
+                            )
+                    )
+            }
+        }
+        .chartXScale(domain: domain)
+    }
+}
+
+struct ChartTabView: View {
+    @State private var selectedElement: (date: Date, notes: String)? = nil
     @State var domain: ClosedRange<Date> = date...Date.now
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Session.date, ascending: true)],
@@ -29,68 +141,61 @@ struct ChartTabView: View {
         NavigationView {
             GeometryReader { geometry in
                 if sessions.count > 0 {
-                    Text(domain)
-                    Chart {
-                        ForEach(sessions) { session in
-                            LineMark(
-                                x: .value("Date", session.date!),
-                                y: .value("Session Rating", session.sessionRating),
-                                series: .value("Session", "Session")
-                            )
-                            .interpolationMethod(.catmullRom)
-                            .foregroundStyle(by: .value("Session", "Session"))
-                            PointMark(
-                                x: .value("Date", session.date!),
-                                y: .value("Session Rating", session.sessionRating)
-                            )
-                            .symbolSize(25)
-                            .foregroundStyle(session.injured ? .red : .blue)
-                        }
-                        
-                        ForEach(sessions) { session in
-                            LineMark(
-                                x: .value("Date", session.date!),
-                                y: .value("Strength Rating", session.strengthRating),
-                                series: .value("Strength", "Strength")
-                            )
-                            .foregroundStyle(by: .value("Strength", "Strength"))
-                            .interpolationMethod(.catmullRom)
+                    
+                    
+                    List {
+                        VStack(alignment: .leading) {
+                            Text(domain)
+                            .opacity(selectedElement == nil ? 1 : 0)
                             
-                            
-                            PointMark(
-                                x: .value("Date", session.date!),
-                                y: .value("Strength Rating", session.strengthRating)
-                            )
-                            .symbolSize(25)
-                            .foregroundStyle(session.injured ? .red : .green)
+                            SessionChart(selectedElement: $selectedElement, sessions: sessions, domain: $domain)
+                                .frame(height: 500)
                         }
-                    }
-                    .chartOverlay { proxy in
-                        GeometryReader { geometry in
-                            Rectangle().fill(.clear).contentShape(Rectangle())
-                                .gesture(
-                                    DragGesture()
-                                        .onChanged { value in
-                                            let xStart = (value.startLocation.x - geometry[proxy.plotAreaFrame].origin.x) / 5
-                                            let xCurrent = (value.location.x - geometry[proxy.plotAreaFrame].origin.x) / 5
-                                            if let dateStart: Date = proxy.value(atX: xStart),
-                                               let dateCurrent: Date = proxy.value(atX: xCurrent) {
-                                                let delta = Calendar.current.dateComponents([.year, .month, .day], from: dateCurrent , to: dateStart)
-                                                
-                                                if let day = delta.day {
-                                                    let newStart = Calendar.current.date(byAdding: delta, to: domain.lowerBound)!
-                                                    let newEnd = Calendar.current.date(byAdding: delta, to: domain.upperBound)!
-                                                    
-                                                    if day != 0 && newStart >= sessions[0].date! && newEnd <= sessions[sessions.count-1].date! {
-                                                        domain = newStart...newEnd
-                                                    }
-                                                }
-                                            }
+                        .chartBackground { proxy in
+                            ZStack(alignment: .topLeading) {
+                                GeometryReader { nthGeoItem in
+                                    if let selectedElement = selectedElement {
+                                        let dateInterval = Calendar.current.dateInterval(of: .day, for: selectedElement.date)!
+                                        let startPositionX1 = proxy.position(forX: dateInterval.start) ?? 0
+                                        let startPositionX2 = proxy.position(forX: dateInterval.end) ?? 0
+                                        let midStartPositionX = (startPositionX1 + startPositionX2) / 2 + nthGeoItem[proxy.plotAreaFrame].origin.x
+                                        
+                                        let lineX = midStartPositionX
+                                        let lineHeight = nthGeoItem[proxy.plotAreaFrame].maxY
+                                        let boxWidth: CGFloat = 150
+                                        let boxOffset = max(0, min(nthGeoItem.size.width - boxWidth, lineX - boxWidth / 2))
+                                        
+                                        Rectangle()
+                                            .fill(.quaternary)
+                                            .frame(width: 2, height: lineHeight)
+                                            .position(x: lineX, y: lineHeight / 2)
+                                        
+                                        VStack(alignment: .leading) {
+                                            Text("\(selectedElement.date, format: .dateTime.year().month().day())")
+                                                .font(.callout)
+                                                .foregroundStyle(.secondary)
+                                            Text("\(selectedElement.notes)")
+                                                .font(.caption)
+                                                .foregroundColor(.primary)
                                         }
-                                )
+                                        .frame(width: boxWidth, alignment: .leading)
+                                        .background {
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .fill(.background)
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .fill(.quaternary.opacity(0.7))
+                                            }
+                                            .padding([.leading, .trailing], -8)
+                                            .padding([.top, .bottom], -4)
+                                        }
+                                        .offset(x: boxOffset)
+                                    }
+                                }
+                            }
                         }
                     }
-                    .chartXScale(domain: domain)
+                    
                 }
                 else {
                     HStack{
