@@ -150,18 +150,16 @@ struct ChartTabView: View {
                             Text(domain)
                             SessionChart(selectedElement: $selectedElement, sessions: sessions, domain: $domain)
                                 .frame(height: 400)
-                            }
                         }
                         .onChange(of: timeRange, perform: { value in
-                            let today = Date()
                             switch timeRange {
-                                case .last30Days:
-                                    let past = Calendar.current.date(byAdding: .day, value: -30, to: today)!
-                                    domain = past...today
-                                    
-                                case .last12Months:
-                                    let past = Calendar.current.date(byAdding: .day, value: -365, to: today)!
-                                    domain = past...today
+                            case .last30Days:
+                                let past = Calendar.current.date(byAdding: .day, value: -30, to: Date.now)!
+                                domain = past...Date.now
+                                
+                            case .last12Months:
+                                let past = Calendar.current.date(byAdding: .day, value: -365, to: Date.now)!
+                                domain = past...Date.now
                             }
                         })
                         .chartBackground { proxy in
@@ -207,6 +205,7 @@ struct ChartTabView: View {
                                 }
                             }
                         }
+                    }
                 }
                 else {
                     HStack{
