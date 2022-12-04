@@ -10,10 +10,9 @@ import SwiftUI
 import Charts
 
 
-var date: Date {
+var thirtyDaysAgo: Date {
     get {
-        let dateFormatter = ISO8601DateFormatter()
-        return dateFormatter.date(from: "2022-09-14T10:44:00+0000")!
+        return Calendar.current.date(byAdding: .day, value: -30, to: Date.now)!
     }
 }
 
@@ -21,7 +20,7 @@ struct SessionChart: View {
     @Binding var selectedElement: (date: Date, notes: String)?
     var sessions: FetchedResults<Session>
     @Binding var domain: ClosedRange<Date>
-    
+   
     
     func findElement(location: CGPoint, proxy: ChartProxy, geometry: GeometryProxy) -> (date: Date?, notes: String?)? {
         let relativeXPosition = location.x - geometry[proxy.plotAreaFrame].origin.x
@@ -114,7 +113,6 @@ struct SessionChart: View {
                                 } else {
                                     selectedElement = element as? (date: Date, notes: String)
                                 }
-                                print("\(String(describing: selectedElement))")
                             }
                             .exclusively(
                                 before: DragGesture()
@@ -131,7 +129,8 @@ struct SessionChart: View {
 
 struct ChartTabView: View {
     @State private var selectedElement: (date: Date, notes: String)? = nil
-    @State var domain: ClosedRange<Date> = date...Date.now
+    @State private var timeRange: TimeRange = .last30Days
+    @State var domain: ClosedRange<Date> = thirtyDaysAgo...Date.now
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Session.date, ascending: true)],
         animation: .default)
@@ -145,12 +144,26 @@ struct ChartTabView: View {
                     
                     List {
                         VStack(alignment: .leading) {
-                            Text(domain)
+                            TimeRangePicker(value: $timeRange)
+                                .padding(.bottom)
                             .opacity(selectedElement == nil ? 1 : 0)
-                            
+                            Text(domain)
                             SessionChart(selectedElement: $selectedElement, sessions: sessions, domain: $domain)
-                                .frame(height: 500)
+                                .frame(height: 400)
+                            }
                         }
+                        .onChange(of: timeRange, perform: { value in
+                            let today = Date()
+                            switch timeRange {
+                                case .last30Days:
+                                    let past = Calendar.current.date(byAdding: .day, value: -30, to: today)!
+                                    domain = past...today
+                                    
+                                case .last12Months:
+                                    let past = Calendar.current.date(byAdding: .day, value: -365, to: today)!
+                                    domain = past...today
+                            }
+                        })
                         .chartBackground { proxy in
                             ZStack(alignment: .topLeading) {
                                 GeometryReader { nthGeoItem in
@@ -194,8 +207,6 @@ struct ChartTabView: View {
                                 }
                             }
                         }
-                    }
-                    
                 }
                 else {
                     HStack{
@@ -206,8 +217,8 @@ struct ChartTabView: View {
                 }
             } .navigationBarTitle("Trends")
                 .onAppear() {
-                    if sessions.count > 0{
-                        self.domain = date...sessions[sessions.count-1].date!
+                    if sessions.count > 0 {
+                        self.domain = thirtyDaysAgo...Date.now
                     }
                 }
         }

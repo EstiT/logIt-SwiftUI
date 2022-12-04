@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		222EAB5A2934816A0093EAEB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EAB592934816A0093EAEB /* Utils.swift */; };
+		222EAB5B2934816A0093EAEB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EAB592934816A0093EAEB /* Utils.swift */; };
 		22A132F7291642F500CCFBD1 /* DomainGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 22A132F6291642F500CCFBD1 /* DomainGesture */; };
 		22A6057A26FF50AC0063A73B /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6057926FF50AC0063A73B /* Tests_iOS.swift */; };
 		22A6058526FF50AC0063A73B /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6058426FF50AC0063A73B /* Tests_macOS.swift */; };
@@ -55,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		222EAB592934816A0093EAEB /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		22A6055C26FF50A90063A73B /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		22A6055D26FF50A90063A73B /* logItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logItApp.swift; sourceTree = "<group>"; };
 		22A6055E26FF50A90063A73B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -149,6 +152,7 @@
 				22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */,
 				22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */,
 				22FB02042702F10F00EB7AA3 /* AppDelegate.swift */,
+				222EAB592934816A0093EAEB /* Utils.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -442,6 +446,7 @@
 				22A6058926FF50AC0063A73B /* logItApp.swift in Sources */,
 				22FB02052702F10F00EB7AA3 /* AppDelegate.swift in Sources */,
 				22AC1E902701DDE700A6C1F8 /* SeshRow.swift in Sources */,
+				222EAB5A2934816A0093EAEB /* Utils.swift in Sources */,
 				22A605A326FF62D00063A73B /* ChartTabView.swift in Sources */,
 				22AC1E8D2701DB5D00A6C1F8 /* SeshList.swift in Sources */,
 				22A6058B26FF50AC0063A73B /* ContentView.swift in Sources */,
@@ -458,6 +463,7 @@
 				22A6058A26FF50AC0063A73B /* logItApp.swift in Sources */,
 				22FB02062702F10F00EB7AA3 /* AppDelegate.swift in Sources */,
 				22AC1E912701DDE700A6C1F8 /* SeshRow.swift in Sources */,
+				222EAB5B2934816A0093EAEB /* Utils.swift in Sources */,
 				22A605A426FF62D00063A73B /* ChartTabView.swift in Sources */,
 				22AC1E8E2701DB5D00A6C1F8 /* SeshList.swift in Sources */,
 				22A6058C26FF50AC0063A73B /* ContentView.swift in Sources */,
