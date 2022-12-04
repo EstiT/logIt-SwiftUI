@@ -20,7 +20,7 @@ struct SessionChart: View {
     @Binding var selectedElement: (date: Date, notes: String)?
     var sessions: FetchedResults<Session>
     @Binding var domain: ClosedRange<Date>
-   
+    
     
     func findElement(location: CGPoint, proxy: ChartProxy, geometry: GeometryProxy) -> (date: Date?, notes: String?)? {
         let relativeXPosition = location.x - geometry[proxy.plotAreaFrame].origin.x
@@ -43,7 +43,7 @@ struct SessionChart: View {
         }
         return nil
     }
-
+    
     var body: some View {
         Chart {
             ForEach(sessions) { session in
@@ -140,14 +140,11 @@ struct ChartTabView: View {
         NavigationView {
             GeometryReader { geometry in
                 if sessions.count > 0 {
-                    
-                    
                     List {
                         VStack(alignment: .leading) {
                             TimeRangePicker(value: $timeRange)
                                 .padding(.bottom)
-                            .opacity(selectedElement == nil ? 1 : 0)
-                            Text(domain)
+                            Text(domain).opacity(selectedElement == nil ? 1 : 0)
                             SessionChart(selectedElement: $selectedElement, sessions: sessions, domain: $domain)
                                 .frame(height: 400)
                         }
@@ -175,11 +172,11 @@ struct ChartTabView: View {
                                         let lineHeight = nthGeoItem[proxy.plotAreaFrame].maxY
                                         let boxWidth: CGFloat = 150
                                         let boxOffset = max(0, min(nthGeoItem.size.width - boxWidth, lineX - boxWidth / 2))
-                                        
+                                       
                                         Rectangle()
                                             .fill(.quaternary)
-                                            .frame(width: 2, height: lineHeight)
-                                            .position(x: lineX, y: lineHeight / 2)
+                                            .frame(width: 2, height: lineHeight - 60)
+                                            .position(x: lineX, y: lineHeight / 2 + 50)
                                         
                                         VStack(alignment: .leading) {
                                             Text("\(selectedElement.date, format: .dateTime.year().month().day())")
@@ -200,7 +197,8 @@ struct ChartTabView: View {
                                             .padding([.leading, .trailing], -8)
                                             .padding([.top, .bottom], -4)
                                         }
-                                        .offset(x: boxOffset)
+                                        
+                                        .offset(x: boxOffset, y: 45)
                                     }
                                 }
                             }
