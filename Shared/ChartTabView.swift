@@ -153,7 +153,9 @@ struct ChartTabView: View {
                             case .last30Days:
                                 let past = Calendar.current.date(byAdding: .day, value: -30, to: Date.now)!
                                 domain = past...Date.now
-                                
+                            case .last6Months:
+                                let past = Calendar.current.date(byAdding: .day, value: -182, to: Date.now)!
+                                domain = past...Date.now
                             case .last12Months:
                                 let past = Calendar.current.date(byAdding: .day, value: -365, to: Date.now)!
                                 domain = past...Date.now

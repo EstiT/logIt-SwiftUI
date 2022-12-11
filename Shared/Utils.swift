@@ -10,6 +10,7 @@ import SwiftUI
 
 enum TimeRange {
     case last30Days
+    case last6Months
     case last12Months
 }
 
@@ -19,6 +20,7 @@ struct TimeRangePicker: View {
     var body: some View {
         Picker("Time Range", selection: $value.animation(.easeInOut)) {
             Text("30 Days").tag(TimeRange.last30Days)
+            Text("6 Months").tag(TimeRange.last6Months)
             Text("12 Months").tag(TimeRange.last12Months)
         }
         .pickerStyle(.segmented)
