@@ -73,8 +73,6 @@ struct StatsView: View {
                 Text("Average session rating: \(calcSessionRating(sessions: sessions, range: timeRange))/5").padding(.bottom)
                 Text("Percentage of time injured: \(calcInjuryPercentage(sessions: sessions, range: timeRange))%").padding(.bottom)
             }
-            .onChange(of: timeRange, perform: { value in
-            })
         }
         .navigationTitle("Session Statistics")
         .navigationBarTitleDisplayMode(.inline)
