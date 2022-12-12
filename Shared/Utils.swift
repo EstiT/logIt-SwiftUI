@@ -26,3 +26,10 @@ struct TimeRangePicker: View {
         .pickerStyle(.segmented)
     }
 }
+
+let sessions: [Session] = []
+struct StatsLink: View {
+    var body: some View {
+        NavigationLink("Session Stats", value: sessions)
+    }
+}

@@ -137,71 +137,82 @@ struct ChartTabView: View {
     private var sessions: FetchedResults<Session>
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             GeometryReader { geometry in
                 if sessions.count > 0 {
-                    List {
-                        VStack(alignment: .leading) {
-                            TimeRangePicker(value: $timeRange)
-                                .padding(.bottom)
-                            Text(domain).opacity(selectedElement == nil ? 1 : 0)
-                            SessionChart(selectedElement: $selectedElement, sessions: sessions, domain: $domain)
-                                .frame(height: 400)
-                        }
-                        .onChange(of: timeRange, perform: { value in
-                            switch timeRange {
-                            case .last30Days:
-                                let past = Calendar.current.date(byAdding: .day, value: -30, to: Date.now)!
-                                domain = past...Date.now
-                            case .last6Months:
-                                let past = Calendar.current.date(byAdding: .day, value: -182, to: Date.now)!
-                                domain = past...Date.now
-                            case .last12Months:
-                                let past = Calendar.current.date(byAdding: .day, value: -365, to: Date.now)!
-                                domain = past...Date.now
+                    VStack(alignment: .leading) {
+                        TimeRangePicker(value: $timeRange)
+                            .padding(.bottom)
+                        Text(domain)
+                            .opacity(selectedElement == nil ? 1 : 0)
+                        SessionChart(selectedElement: $selectedElement, sessions: sessions, domain: $domain)
+                            .frame(height: 360)
+                            .padding()
+                        List {
+                            Section() {
+                                StatsLink()
                             }
-                        })
-                        .chartBackground { proxy in
-                            ZStack(alignment: .topLeading) {
-                                GeometryReader { nthGeoItem in
-                                    if let selectedElement = selectedElement {
-                                        let dateInterval = Calendar.current.dateInterval(of: .day, for: selectedElement.date)!
-                                        let startPositionX1 = proxy.position(forX: dateInterval.start) ?? 0
-                                        let startPositionX2 = proxy.position(forX: dateInterval.end) ?? 0
-                                        let midStartPositionX = (startPositionX1 + startPositionX2) / 2 + nthGeoItem[proxy.plotAreaFrame].origin.x
-                                        
-                                        let lineX = midStartPositionX
-                                        let lineHeight = nthGeoItem[proxy.plotAreaFrame].maxY
-                                        let boxWidth: CGFloat = 150
-                                        let boxOffset = max(0, min(nthGeoItem.size.width - boxWidth, lineX - boxWidth / 2))
-                                       
-                                        Rectangle()
-                                            .fill(.quaternary)
-                                            .frame(width: 2, height: lineHeight - 60)
-                                            .position(x: lineX, y: lineHeight / 2 + 50)
-                                        
-                                        VStack(alignment: .leading) {
-                                            Text("\(selectedElement.date, format: .dateTime.year().month().day())")
-                                                .font(.callout)
-                                                .foregroundStyle(.secondary)
-                                            Text("\(selectedElement.notes)")
-                                                .font(.caption)
-                                                .foregroundColor(.primary)
-                                        }
-                                        .frame(width: boxWidth, alignment: .leading)
-                                        .background {
-                                            ZStack {
-                                                RoundedRectangle(cornerRadius: 8)
-                                                    .fill(.background)
-                                                RoundedRectangle(cornerRadius: 8)
-                                                    .fill(.quaternary.opacity(0.7))
-                                            }
-                                            .padding([.leading, .trailing], -8)
-                                            .padding([.top, .bottom], -4)
-                                        }
-                                        
-                                        .offset(x: boxOffset, y: 45)
+                        }
+                        .listStyle(.plain)
+                        .navigationDestination(for: [Session].self) { key in
+                            StatsView(sessions: Array(sessions))
+                        }
+                    }
+                    
+                    .onChange(of: timeRange, perform: { value in
+                        switch timeRange {
+                        case .last30Days:
+                            let past = Calendar.current.date(byAdding: .day, value: -30, to: Date.now)!
+                            domain = past...Date.now
+                        case .last6Months:
+                            let past = Calendar.current.date(byAdding: .month, value: -6, to: Date.now)!
+                            domain = past...Date.now
+                        case .last12Months:
+                            let past = Calendar.current.date(byAdding: .year, value: -1, to: Date.now)!
+                            domain = past...Date.now
+                        }
+                    })
+                    
+                    .chartBackground { proxy in
+                        ZStack(alignment: .topLeading) {
+                            GeometryReader { nthGeoItem in
+                                if let selectedElement = selectedElement {
+                                    let dateInterval = Calendar.current.dateInterval(of: .day, for: selectedElement.date)!
+                                    let startPositionX1 = proxy.position(forX: dateInterval.start) ?? 0
+                                    let startPositionX2 = proxy.position(forX: dateInterval.end) ?? 0
+                                    let midStartPositionX = (startPositionX1 + startPositionX2) / 2 + nthGeoItem[proxy.plotAreaFrame].origin.x
+                                    
+                                    let lineX = midStartPositionX
+                                    let lineHeight = nthGeoItem[proxy.plotAreaFrame].maxY
+                                    let boxWidth: CGFloat = 150
+                                    let boxOffset = max(0, min(nthGeoItem.size.width - boxWidth, lineX - boxWidth / 2))
+                                    
+                                    Rectangle()
+                                        .fill(.quaternary)
+                                        .frame(width: 2, height: lineHeight - 60)
+                                        .position(x: lineX, y: lineHeight / 2 + 50)
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text("\(selectedElement.date, format: .dateTime.year().month().day())")
+                                            .font(.callout)
+                                            .foregroundStyle(.secondary)
+                                        Text("\(selectedElement.notes)")
+                                            .font(.caption)
+                                            .foregroundColor(.primary)
                                     }
+                                    .frame(width: boxWidth, alignment: .leading)
+                                    .background {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .fill(.background)
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .fill(.quaternary.opacity(0.7))
+                                        }
+                                        .padding([.leading, .trailing], -8)
+                                        .padding([.top, .bottom], -4)
+                                    }
+                                    
+                                    .offset(x: boxOffset, y: 45)
                                 }
                             }
                         }
@@ -214,12 +225,13 @@ struct ChartTabView: View {
                         Spacer()
                     } .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
-            } .navigationBarTitle("Trends")
-                .onAppear() {
-                    if sessions.count > 0 {
-                        self.domain = thirtyDaysAgo...Date.now
-                    }
+            }
+            .navigationBarTitle("Trends")
+            .onAppear() {
+                if sessions.count > 0 {
+                    self.domain = thirtyDaysAgo...Date.now
                 }
+            }
         }
     }
 }

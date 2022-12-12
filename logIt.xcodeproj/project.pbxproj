@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		222EAB5A2934816A0093EAEB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EAB592934816A0093EAEB /* Utils.swift */; };
 		222EAB5B2934816A0093EAEB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EAB592934816A0093EAEB /* Utils.swift */; };
+		222EAB5D29469CCC0093EAEB /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EAB5C29469CCC0093EAEB /* StatsView.swift */; };
+		222EAB5E29469CCC0093EAEB /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EAB5C29469CCC0093EAEB /* StatsView.swift */; };
 		22A132F7291642F500CCFBD1 /* DomainGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 22A132F6291642F500CCFBD1 /* DomainGesture */; };
 		22A6057A26FF50AC0063A73B /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6057926FF50AC0063A73B /* Tests_iOS.swift */; };
 		22A6058526FF50AC0063A73B /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6058426FF50AC0063A73B /* Tests_macOS.swift */; };
@@ -58,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		222EAB592934816A0093EAEB /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		222EAB5C29469CCC0093EAEB /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		22A6055C26FF50A90063A73B /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		22A6055D26FF50A90063A73B /* logItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logItApp.swift; sourceTree = "<group>"; };
 		22A6055E26FF50A90063A73B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 				22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */,
 				22FB02042702F10F00EB7AA3 /* AppDelegate.swift */,
 				222EAB592934816A0093EAEB /* Utils.swift */,
+				222EAB5C29469CCC0093EAEB /* StatsView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -441,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222EAB5D29469CCC0093EAEB /* StatsView.swift in Sources */,
 				22A6058726FF50AC0063A73B /* logIt.xcdatamodeld in Sources */,
 				22A6058D26FF50AC0063A73B /* Persistence.swift in Sources */,
 				22A6058926FF50AC0063A73B /* logItApp.swift in Sources */,
@@ -458,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222EAB5E29469CCC0093EAEB /* StatsView.swift in Sources */,
 				22A6058826FF50AC0063A73B /* logIt.xcdatamodeld in Sources */,
 				22A6058E26FF50AC0063A73B /* Persistence.swift in Sources */,
 				22A6058A26FF50AC0063A73B /* logItApp.swift in Sources */,
