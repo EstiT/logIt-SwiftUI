@@ -49,17 +49,19 @@ func calcStrengthRating(sessions: [Session], range: TimeRange) -> String {
     return String(format:"%.2f", strengthSum / Double(filteredSessions.count))
 }
 
-func calcInjuryPercentage(sessions: [Session], range: TimeRange) -> String {
+func calcInjuryPercentage(sessions: [Session], range: TimeRange) -> Double {
     let filteredSessions = sessionsInDateRange(sessions: sessions, range: range)
     let injuryCount = Double(filteredSessions.filter { $0.injured }.count)
-    return String(format:"%.2f", (injuryCount / Double(filteredSessions.count) * 100))
+    return (injuryCount / Double(filteredSessions.count)) * 100
 }
 
 
 struct StatsView: View {
     var sessions: [Session]
     @State private var timeRange: TimeRange = .last30Days
-
+    @State private var slices: [(Double, Color)] = []
+    @State private var injuryPercent: Double = 0.0
+    
     var body: some View {
         List {
             Text("Total number of sessions logged: \(sessions.count)").padding(.bottom)
@@ -71,7 +73,18 @@ struct StatsView: View {
                 Text("Average number of sessions per week: \(calcSessionsPerWeek(sessions: sessions, range: timeRange))").padding(.bottom)
                 Text("Average strength rating: \(calcStrengthRating(sessions: sessions, range: timeRange))/5").padding(.bottom)
                 Text("Average session rating: \(calcSessionRating(sessions: sessions, range: timeRange))/5").padding(.bottom)
-                Text("Percentage of time injured: \(calcInjuryPercentage(sessions: sessions, range: timeRange))%").padding(.bottom)
+            }
+            HStack {
+                Text("Percentage of time injured: \(String(format:"%.1f", injuryPercent))%").padding(.bottom)
+                PieView(slices: $slices)
+            }
+            .onChange(of: timeRange, perform: { value in
+                injuryPercent = calcInjuryPercentage(sessions: sessions, range: timeRange)
+                slices = [(injuryPercent, .red), (100 - injuryPercent, .blue)]
+            })
+            .onAppear() {
+                injuryPercent = calcInjuryPercentage(sessions: sessions, range: timeRange)
+                slices = [(injuryPercent, .red), (100 - injuryPercent, .blue)]
             }
         }
         .navigationTitle("Session Statistics")
