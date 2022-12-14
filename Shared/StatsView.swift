@@ -76,7 +76,7 @@ struct StatsView: View {
             }
             HStack {
                 Text("Percentage of time injured: \(String(format:"%.1f", injuryPercent))%").padding(.bottom)
-                PieView(slices: $slices)
+                PieView(slices: $slices, id: timeRange.description).scaleEffect(0.5, anchor: .center)
             }
             .onChange(of: timeRange, perform: { value in
                 injuryPercent = calcInjuryPercentage(sessions: sessions, range: timeRange)

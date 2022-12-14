@@ -8,10 +8,17 @@
 import Foundation
 import SwiftUI
 
-enum TimeRange {
+enum TimeRange: CustomStringConvertible {
     case last30Days
     case last6Months
     case last12Months
+    var description: String {
+        switch self {
+            case .last30Days: return "30 Days"
+            case .last6Months: return "6 Months"
+            case .last12Months: return "12 Months"
+        }
+    }
 }
 
 struct TimeRangePicker: View {
@@ -19,9 +26,9 @@ struct TimeRangePicker: View {
 
     var body: some View {
         Picker("Time Range", selection: $value.animation(.easeInOut)) {
-            Text("30 Days").tag(TimeRange.last30Days)
-            Text("6 Months").tag(TimeRange.last6Months)
-            Text("12 Months").tag(TimeRange.last12Months)
+            Text(TimeRange.last30Days.description).tag(TimeRange.last30Days)
+            Text(TimeRange.last6Months.description).tag(TimeRange.last6Months)
+            Text(TimeRange.last12Months.description).tag(TimeRange.last12Months)
         }
         .pickerStyle(.segmented)
     }
@@ -36,27 +43,20 @@ struct StatsLink: View {
 
 struct PieView: View {
     @Binding var slices: [(Double, Color)]
+    var id: String
+    @State private var animate = false
     var body: some View {
-        Canvas { context, size in
-            let total = slices.reduce(0) { $0 + $1.0 }
-            context.translateBy(x: size.width * 0.5, y: size.height * 0.5)
-            var pieContext = context
-            pieContext.rotate(by: .degrees(-90))
-            let radius = min(size.width, size.height) * 0.48
-            var startAngle = Angle.zero
-            for (value, color) in slices {
-                let angle = Angle(degrees: 360 * (value / total))
-                let endAngle = startAngle + angle
-                let path = Path { p in
-                    p.move(to: .zero)
-                    p.addArc(center: .zero, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
-                    p.closeSubpath()
-                }
-                pieContext.fill(path, with: .color(color))
-                
-                startAngle = endAngle
+        ZStack {
+            ForEach(0..<slices.count, id: \.self) { index in
+                Circle()
+                    .trim(from: index == 0 ? 0.0 : slices[index-1].0/100,
+                          to: index == slices.count-1 ? 100.0 : slices[index].0/100)
+                    .stroke(slices[index].1, lineWidth: 100)
+                    .animation(.spring(), value: animate)
             }
         }
-        .aspectRatio(1, contentMode: .fit)
+        .onChange(of: id) { value in
+            animate = !animate
+        }
     }
 }
