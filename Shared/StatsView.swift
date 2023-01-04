@@ -21,12 +21,8 @@ func sessionsInDateRange(sessions: [Session], range: TimeRange) -> [Session] {
     return sessions.filter { sesh in return sesh.date! >= past }
 }
 
-func calcSessionsInDateRange(sessions: [Session], range: TimeRange) -> Int {
-    return sessionsInDateRange(sessions: sessions, range: range).count
-}
-
 func calcSessionsPerWeek(sessions: [Session], range: TimeRange) -> String {
-    let numSessions = sessionsInDateRange(sessions: sessions, range: range).count
+    let numSessions = sessions.count
     switch range {
     case .last30Days:
         return String(format:"%.2f", Double(numSessions)/Double(4))
@@ -37,22 +33,19 @@ func calcSessionsPerWeek(sessions: [Session], range: TimeRange) -> String {
     }
 }
 
-func calcSessionRating(sessions: [Session], range: TimeRange) -> String {
-    let filteredSessions = sessionsInDateRange(sessions: sessions, range: range)
-    let sessionSum = Double(filteredSessions.compactMap { $0.sessionRating }.reduce(0, +))
-    return String(format:"%.2f", sessionSum / Double(filteredSessions.count))
+func calcSessionRating(sessions: [Session]) -> String {
+    let sessionSum = Double(sessions.compactMap { $0.sessionRating }.reduce(0, +))
+    return String(format:"%.2f", sessionSum / Double(sessions.count))
 }
 
-func calcStrengthRating(sessions: [Session], range: TimeRange) -> String {
-    let filteredSessions = sessionsInDateRange(sessions: sessions, range: range)
-    let strengthSum = Double(filteredSessions.compactMap { $0.strengthRating }.reduce(0, +))
-    return String(format:"%.2f", strengthSum / Double(filteredSessions.count))
+func calcStrengthRating(sessions: [Session]) -> String {
+    let strengthSum = Double(sessions.compactMap { $0.strengthRating }.reduce(0, +))
+    return String(format:"%.2f", strengthSum / Double(sessions.count))
 }
 
 func calcInjuryPercentage(sessions: [Session], range: TimeRange) -> Double {
-    let filteredSessions = sessionsInDateRange(sessions: sessions, range: range)
-    let injuryCount = Double(filteredSessions.filter { $0.injured }.count)
-    return (injuryCount / Double(filteredSessions.count)) * 100
+    let injuryCount = Double(sessions.filter { $0.injured }.count)
+    return injuryCount / Double(sessions.count) * 100
 }
 
 
@@ -68,22 +61,26 @@ struct StatsView: View {
             VStack(alignment: .leading) {
                 TimeRangePicker(value: $timeRange)
                     .padding(.bottom)
-                
-                Text("Number of sessions logged: \(calcSessionsInDateRange(sessions: sessions, range: timeRange))").padding(.bottom)
-                Text("Average number of sessions per week: \(calcSessionsPerWeek(sessions: sessions, range: timeRange))").padding(.bottom)
-                Text("Average strength rating: \(calcStrengthRating(sessions: sessions, range: timeRange))/5").padding(.bottom)
-                Text("Average session rating: \(calcSessionRating(sessions: sessions, range: timeRange))/5").padding(.bottom)
+                let filteredSessions = sessionsInDateRange(sessions: sessions, range: timeRange)
+                Text("Number of sessions logged: \(filteredSessions.count)").padding(.bottom)
+                Text("Average number of sessions per week: \(calcSessionsPerWeek(sessions: filteredSessions, range: timeRange))").padding(.bottom)
+                Text("Average strength rating: \(calcStrengthRating(sessions: filteredSessions))/5").padding(.bottom)
+                Text("Average session rating: \(calcSessionRating(sessions: filteredSessions))/5").padding(.bottom)
             }
             HStack {
-                Text("Percentage of time injured: \(String(format:"%.1f", injuryPercent))%").padding(.bottom)
+                Text("Percentage of sessions injured: \(String(format:"%.1f", injuryPercent))%").padding(.bottom)
                 PieView(slices: $slices, id: timeRange.description).scaleEffect(0.5, anchor: .center)
             }
             .onChange(of: timeRange, perform: { value in
-                injuryPercent = calcInjuryPercentage(sessions: sessions, range: timeRange)
+                let filteredSessions = sessionsInDateRange(sessions: sessions, range: timeRange)
+
+                injuryPercent = calcInjuryPercentage(sessions: filteredSessions, range: timeRange)
                 slices = [(injuryPercent, .red), (100 - injuryPercent, .blue)]
             })
             .onAppear() {
-                injuryPercent = calcInjuryPercentage(sessions: sessions, range: timeRange)
+                let filteredSessions = sessionsInDateRange(sessions: sessions, range: timeRange)
+                
+                injuryPercent = calcInjuryPercentage(sessions: filteredSessions, range: timeRange)
                 slices = [(injuryPercent, .red), (100 - injuryPercent, .blue)]
             }
         }
