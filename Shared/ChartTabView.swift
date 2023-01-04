@@ -230,6 +230,7 @@ struct ChartTabView: View {
             .onAppear() {
                 if sessions.count > 0 {
                     self.domain = thirtyDaysAgo...Date.now
+                    self.timeRange = .last30Days
                 }
             }
         }

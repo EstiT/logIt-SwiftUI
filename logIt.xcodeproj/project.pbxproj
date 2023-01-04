@@ -30,8 +30,8 @@
 		22A605A426FF62D00063A73B /* ChartTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A605A226FF62D00063A73B /* ChartTabView.swift */; };
 		22A605A72700856E0063A73B /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 22A605A62700856E0063A73B /* SwiftUICharts */; };
 		22AC1E8B2701CF9F00A6C1F8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 22AC1E8A2701CF9F00A6C1F8 /* AlertToast */; };
-		22AC1E8D2701DB5D00A6C1F8 /* SeshList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */; };
-		22AC1E8E2701DB5D00A6C1F8 /* SeshList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */; };
+		22AC1E8D2701DB5D00A6C1F8 /* ListTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8C2701DB5D00A6C1F8 /* ListTabView.swift */; };
+		22AC1E8E2701DB5D00A6C1F8 /* ListTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8C2701DB5D00A6C1F8 /* ListTabView.swift */; };
 		22AC1E902701DDE700A6C1F8 /* SeshRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */; };
 		22AC1E912701DDE700A6C1F8 /* SeshRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */; };
 		22FB02032702EF7300EB7AA3 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22FB02022702EF7300EB7AA3 /* IQKeyboardManagerSwift */; };
@@ -79,7 +79,7 @@
 		22A6058626FF50AC0063A73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22A6059F26FF575B0063A73B /* LogTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTabView.swift; sourceTree = "<group>"; };
 		22A605A226FF62D00063A73B /* ChartTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTabView.swift; sourceTree = "<group>"; };
-		22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeshList.swift; sourceTree = "<group>"; };
+		22AC1E8C2701DB5D00A6C1F8 /* ListTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTabView.swift; sourceTree = "<group>"; };
 		22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeshRow.swift; sourceTree = "<group>"; };
 		22FB02042702F10F00EB7AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6701DEA644B147E7DC4673AC /* Pods_logIt__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_logIt__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +152,7 @@
 				22A6055B26FF50A90063A73B /* logIt.xcdatamodeld */,
 				22A6059F26FF575B0063A73B /* LogTabView.swift */,
 				22A605A226FF62D00063A73B /* ChartTabView.swift */,
-				22AC1E8C2701DB5D00A6C1F8 /* SeshList.swift */,
+				22AC1E8C2701DB5D00A6C1F8 /* ListTabView.swift */,
 				22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */,
 				22FB02042702F10F00EB7AA3 /* AppDelegate.swift */,
 				222EAB592934816A0093EAEB /* Utils.swift */,
@@ -453,7 +453,7 @@
 				22AC1E902701DDE700A6C1F8 /* SeshRow.swift in Sources */,
 				222EAB5A2934816A0093EAEB /* Utils.swift in Sources */,
 				22A605A326FF62D00063A73B /* ChartTabView.swift in Sources */,
-				22AC1E8D2701DB5D00A6C1F8 /* SeshList.swift in Sources */,
+				22AC1E8D2701DB5D00A6C1F8 /* ListTabView.swift in Sources */,
 				22A6058B26FF50AC0063A73B /* ContentView.swift in Sources */,
 				22A605A026FF575B0063A73B /* LogTabView.swift in Sources */,
 			);
@@ -471,7 +471,7 @@
 				22AC1E912701DDE700A6C1F8 /* SeshRow.swift in Sources */,
 				222EAB5B2934816A0093EAEB /* Utils.swift in Sources */,
 				22A605A426FF62D00063A73B /* ChartTabView.swift in Sources */,
-				22AC1E8E2701DB5D00A6C1F8 /* SeshList.swift in Sources */,
+				22AC1E8E2701DB5D00A6C1F8 /* ListTabView.swift in Sources */,
 				22A6058C26FF50AC0063A73B /* ContentView.swift in Sources */,
 				22A605A126FF575B0063A73B /* LogTabView.swift in Sources */,
 			);

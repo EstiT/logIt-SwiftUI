@@ -16,7 +16,7 @@ struct ContentView: View {
                     Image(systemName: "square.and.pencil")
                     Text("Log")
                 }
-            SeshList()
+            ListTabView()
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("List")

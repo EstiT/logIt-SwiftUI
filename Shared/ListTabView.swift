@@ -9,10 +9,10 @@ import CoreData
 import SwiftUI
 import AlertToast
 
-struct SeshList: View {
+struct ListTabView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Session.date, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Session.date, ascending: false)],
         animation: .default)
     private var sessions: FetchedResults<Session>
     @State private var showFail = false
