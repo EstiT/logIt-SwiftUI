@@ -133,19 +133,20 @@ struct ChartTabView: View {
     @State var domain: ClosedRange<Date> = thirtyDaysAgo...Date.now
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Session.date, ascending: true)],
+        predicate: NSPredicate(format: "type != %@", SeshType.gymWeights.description),
         animation: .default)
-    private var sessions: FetchedResults<Session>
+    private var climbingSessions: FetchedResults<Session>
     
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
-                if sessions.count > 0 {
+                if climbingSessions.count > 0 {
                     VStack(alignment: .leading) {
                         TimeRangePicker(value: $timeRange)
                             .padding(.bottom)
                         Text(domain)
                             .opacity(selectedElement == nil ? 1 : 0)
-                        SessionChart(selectedElement: $selectedElement, sessions: sessions, domain: $domain)
+                        SessionChart(selectedElement: $selectedElement, sessions: climbingSessions, domain: $domain)
                             .frame(height: 360)
                             .padding()
                         List {
@@ -155,7 +156,7 @@ struct ChartTabView: View {
                         }
                         .listStyle(.plain)
                         .navigationDestination(for: [Session].self) { key in
-                            StatsView(sessions: Array(sessions))
+                            StatsView(sessions: Array(climbingSessions))
                         }
                     }
                     
@@ -228,7 +229,7 @@ struct ChartTabView: View {
             }
             .navigationBarTitle("Trends")
             .onAppear() {
-                if sessions.count > 0 {
+                if climbingSessions.count > 0 {
                     self.domain = thirtyDaysAgo...Date.now
                     self.timeRange = .last30Days
                 }

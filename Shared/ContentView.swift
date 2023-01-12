@@ -24,7 +24,7 @@ struct ContentView: View {
             ChartTabView()
                 .tabItem {
                     Image(systemName: "waveform.path.ecg") //chart.xyaxis.line  / chart.line.uptrend.xyaxis
-                    Text("Trend")
+                    Text("Trends")
                 }
         }
         
