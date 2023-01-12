@@ -8,6 +8,19 @@
 import Foundation
 import SwiftUI
 
+enum SeshType: CustomStringConvertible {
+    case climbInside
+    case climbOutside
+    case gymWeights
+    var description: String {
+        switch self {
+        case .climbInside: return "Climb Inside"
+        case .climbOutside: return "Climb Outside"
+        case .gymWeights: return "Gym Weights"
+        }
+    }
+}
+
 enum TimeRange: CustomStringConvertible {
     case last30Days
     case last6Months
