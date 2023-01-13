@@ -21,6 +21,11 @@ struct ContentView: View {
                     Image(systemName: "list.bullet")
                     Text("List")
                 }
+            CalendarTabView()
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Text("Calendar")
+                }
             ChartTabView()
                 .tabItem {
                     Image(systemName: "waveform.path.ecg") //chart.xyaxis.line  / chart.line.uptrend.xyaxis

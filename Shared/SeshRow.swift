@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SeshRow: View {
     let sesh: Session
+    
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long

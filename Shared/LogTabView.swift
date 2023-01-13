@@ -136,6 +136,7 @@ struct LogTabView: View {
         strengthIndex = 2
         sessionIndex = 2
         selectedDate = Date()
+        seshType = SeshType.climbInside
     }
 }
 

@@ -34,6 +34,8 @@
 		22AC1E8E2701DB5D00A6C1F8 /* ListTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8C2701DB5D00A6C1F8 /* ListTabView.swift */; };
 		22AC1E902701DDE700A6C1F8 /* SeshRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */; };
 		22AC1E912701DDE700A6C1F8 /* SeshRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */; };
+		22D37FF4296FA57C007434B4 /* CalendarTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D37FF3296FA57C007434B4 /* CalendarTabView.swift */; };
+		22D37FF5296FA57C007434B4 /* CalendarTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D37FF3296FA57C007434B4 /* CalendarTabView.swift */; };
 		22FB02032702EF7300EB7AA3 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22FB02022702EF7300EB7AA3 /* IQKeyboardManagerSwift */; };
 		22FB02052702F10F00EB7AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB02042702F10F00EB7AA3 /* AppDelegate.swift */; };
 		22FB02062702F10F00EB7AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB02042702F10F00EB7AA3 /* AppDelegate.swift */; };
@@ -81,6 +83,7 @@
 		22A605A226FF62D00063A73B /* ChartTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTabView.swift; sourceTree = "<group>"; };
 		22AC1E8C2701DB5D00A6C1F8 /* ListTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTabView.swift; sourceTree = "<group>"; };
 		22AC1E8F2701DDE700A6C1F8 /* SeshRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeshRow.swift; sourceTree = "<group>"; };
+		22D37FF3296FA57C007434B4 /* CalendarTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTabView.swift; sourceTree = "<group>"; };
 		22FB02042702F10F00EB7AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6701DEA644B147E7DC4673AC /* Pods_logIt__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_logIt__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E94B66C9BE723D79FB5CB42 /* Pods-logIt (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-logIt (iOS).debug.xcconfig"; path = "Target Support Files/Pods-logIt (iOS)/Pods-logIt (iOS).debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 				22FB02042702F10F00EB7AA3 /* AppDelegate.swift */,
 				222EAB592934816A0093EAEB /* Utils.swift */,
 				222EAB5C29469CCC0093EAEB /* StatsView.swift */,
+				22D37FF3296FA57C007434B4 /* CalendarTabView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -445,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D37FF4296FA57C007434B4 /* CalendarTabView.swift in Sources */,
 				222EAB5D29469CCC0093EAEB /* StatsView.swift in Sources */,
 				22A6058726FF50AC0063A73B /* logIt.xcdatamodeld in Sources */,
 				22A6058D26FF50AC0063A73B /* Persistence.swift in Sources */,
@@ -463,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D37FF5296FA57C007434B4 /* CalendarTabView.swift in Sources */,
 				222EAB5E29469CCC0093EAEB /* StatsView.swift in Sources */,
 				22A6058826FF50AC0063A73B /* logIt.xcdatamodeld in Sources */,
 				22A6058E26FF50AC0063A73B /* Persistence.swift in Sources */,
