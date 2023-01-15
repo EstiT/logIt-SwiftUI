@@ -28,7 +28,7 @@ struct LogTabView: View {
     @State private var showFail = false
     
     @State var weightExercises = ["Deadlift", "Bench Press", "Rows"]
-    @State var weightSelectedIndex = [14, 7, 3]
+    @State var weightSelectedIndex = [14, 8, 3]
     
     var body: some View {
         NavigationView {

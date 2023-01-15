@@ -22,8 +22,8 @@ struct SeshRow: View {
                 Text(Self.dateFormatter.string(from: sesh.date!))
                     .font(.title)
                 Spacer()
-                Text(sesh.type == SeshType.gymWeights.description ? "🏋🏻" : "🧗🏻‍♀️")
-                    .font(.subheadline)
+                Text(sessionEmoji(sesh))
+                    .font(.callout)
                     .multilineTextAlignment(.trailing)
             }
             HStack {
@@ -45,4 +45,16 @@ struct SeshRow: View {
             }
         }.textSelection(.enabled)
     }
+}
+
+func sessionEmoji(_ sesh: Session) -> String {
+    if let type = sesh.type {
+        if type.description == SeshType.gymWeights.description {
+            return "🏋🏻"
+        }
+        if type.description == SeshType.climbOutside.description {
+            return "🪨"
+        }
+    }
+    return "🧗🏻‍♀️"
 }

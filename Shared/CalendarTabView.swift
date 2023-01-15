@@ -31,20 +31,16 @@ struct CalendarTabView: View {
         NavigationView {
             GeometryReader { geometry in
                 List {
-                    Section {
-                        Text("🟢 - climbing session\n🟣 - weights session")
-                            .font(.subheadline)
-                            .lineSpacing(11)
-                    }
-                    
                     CalendarView(climbingSessions: climbingSessions, weightsSessions: weightsSessions, selectedSession: $selectedSession)
-                        .frame(idealHeight: 285, maxHeight: 310)
+                        .frame(idealHeight: 290, maxHeight: 315)
+                    
                     
                     if let selectedSession {
-                        SeshRow(sesh: selectedSession)
+                        Section(header: Text("Details")) {
+                            SeshRow(sesh: selectedSession)
+                        }
                     }
                 }
-                .padding(.top, -28)
                 
             }.navigationBarTitle("Calendar View")
         }
@@ -67,7 +63,6 @@ struct CalendarView: UIViewRepresentable {
         calendarView.delegate = context.coordinator
         calendarView.calendar = Calendar(identifier: .gregorian)
         calendarView.tintColor = .systemTeal
-//        calendarView.backgroundColor = .secondarySystemBackground
         calendarView.layer.cornerCurve = .continuous
         calendarView.layer.cornerRadius = 10.0
         calendarView.availableDateRange = DateInterval(start: .distantPast, end: .now)
@@ -129,12 +124,15 @@ extension CalendarView {
                 return nil
             }
         
-            if climbingSessions.contains(where: { Calendar.current.isDate($0.date!, equalTo: date, toGranularity: .day) }) {
-                return UICalendarView.Decoration.default(color: .systemGreen, size: .large)
+            if let climbSesh = climbingSessions.first(where: { Calendar.current.isDate($0.date!, equalTo: date, toGranularity: .day) }) {
+                if climbSesh.type == SeshType.climbOutside.description {
+                    return UICalendarView.Decoration.image("🪨".textToImage())
+                }
+                return UICalendarView.Decoration.image("🧗🏻‍♀️".textToImage())
             }
             
             if weightsSessions.contains(where: { Calendar.current.isDate($0.date!, equalTo: date, toGranularity: .day) }) {
-                return UICalendarView.Decoration.default(color: .purple, size: .large)
+                return UICalendarView.Decoration.image("🏋🏻".textToImage())
             }
             
             return nil
