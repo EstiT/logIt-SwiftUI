@@ -18,23 +18,21 @@ struct CalendarTabView: View {
         animation: .default)
     private var climbingSessions: FetchedResults<Session>
     
+
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Session.date, ascending: true)],
         predicate: NSPredicate(format: "type == %@", SeshType.gymWeights.description),
         animation: .default)
     private var weightsSessions: FetchedResults<Session>
     
-    
-   @State private var selectedSession: Session? = nil
+    @State private var selectedSession: Session? = nil
     
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
                 List {
                     CalendarView(climbingSessions: climbingSessions, weightsSessions: weightsSessions, selectedSession: $selectedSession)
-                        .frame(idealHeight: 290, maxHeight: 315)
-                    
-                    
+                                        
                     if let selectedSession {
                         Section(header: Text("Details")) {
                             SeshRow(sesh: selectedSession)
@@ -52,6 +50,7 @@ struct CalendarView: UIViewRepresentable {
     var climbingSessions: FetchedResults<Session>
     var weightsSessions: FetchedResults<Session>
     @Binding var selectedSession: Session?
+    
     
     func makeCoordinator() -> Coordinator {
         Coordinator(climbingSessions: climbingSessions, weightsSessions: weightsSessions, selectedSession: $selectedSession)
@@ -71,7 +70,7 @@ struct CalendarView: UIViewRepresentable {
         calendarView.selectionBehavior = selection
 
         calendarView.transform = CGAffineTransform.identity.scaledBy(x: 0.85, y: 0.85)
-
+        
         return calendarView
     }
     
@@ -89,7 +88,6 @@ extension CalendarView {
         @Binding var selectedSession: Session?
         
         init(climbingSessions: FetchedResults<Session>, weightsSessions: FetchedResults<Session>, selectedSession: Binding<Session?>) {
-            
             self.climbingSessions = climbingSessions
             self.weightsSessions = weightsSessions
             self._selectedSession = selectedSession
@@ -111,8 +109,9 @@ extension CalendarView {
                 guard let date = NSCalendar.current.date(from: dateComponents) else {
                     return true
                 }
-                if climbingSessions.contains(where: { Calendar.current.isDate($0.date!, equalTo: date, toGranularity: .day) }) ||
-                    weightsSessions.contains(where: { Calendar.current.isDate($0.date!, equalTo: date, toGranularity: .day) })  {
+                                
+                if climbingSessions.contains(where: { Calendar.current.isDate($0.date ?? .distantPast, equalTo: date, toGranularity: .day) }) ||
+                    weightsSessions.contains(where: { Calendar.current.isDate($0.date ?? .distantPast, equalTo: date, toGranularity: .day) })  {
                     return true
                 }
             }
@@ -124,14 +123,14 @@ extension CalendarView {
                 return nil
             }
         
-            if let climbSesh = climbingSessions.first(where: { Calendar.current.isDate($0.date!, equalTo: date, toGranularity: .day) }) {
+            if let climbSesh = climbingSessions.first(where: { Calendar.current.isDate($0.date ?? .distantPast, equalTo: date, toGranularity: .day) }) {
                 if climbSesh.type == SeshType.climbOutside.description {
                     return UICalendarView.Decoration.image("🪨".textToImage())
                 }
                 return UICalendarView.Decoration.image("🧗🏻‍♀️".textToImage())
             }
             
-            if weightsSessions.contains(where: { Calendar.current.isDate($0.date!, equalTo: date, toGranularity: .day) }) {
+            if weightsSessions.contains(where: { Calendar.current.isDate($0.date ?? .distantPast, equalTo: date, toGranularity: .day) }) {
                 return UICalendarView.Decoration.image("🏋🏻".textToImage())
             }
             
