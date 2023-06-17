@@ -44,40 +44,39 @@ struct SessionChart: View {
         return nil
     }
     
+    func makeLine(session: Session, series: String) -> LineMark {
+        return LineMark(
+            x: .value("Date", session.date!),
+            y: .value(series + " Rating", series == "Strength" ? session.strengthRating : session.sessionRating),
+            series: .value(series, series)
+        )
+    }
+    
+    func makePoint(session: Session, series: String) -> PointMark {
+        return PointMark(
+            x: .value("Date", session.date!),
+            y: .value(series + " Rating", series == "Strength" ? session.strengthRating : session.sessionRating)
+        )
+    }
+    
     var body: some View {
         Chart {
             ForEach(sessions) { session in
-                LineMark(
-                    x: .value("Date", session.date!),
-                    y: .value("Session Rating", session.sessionRating),
-                    series: .value("Session", "Session")
-                )
-                .interpolationMethod(.catmullRom)
-                .foregroundStyle(by: .value("Session", "Session"))
-                PointMark(
-                    x: .value("Date", session.date!),
-                    y: .value("Session Rating", session.sessionRating)
-                )
-                .symbolSize(25)
-                .foregroundStyle(session.injured ? .red : .blue)
+                makeLine(session: session, series: "Session")
+                    .interpolationMethod(.catmullRom)
+                    .foregroundStyle(by: .value("Session", "Session"))
+                makePoint(session: session, series: "Session")
+                    .symbolSize(25)
+                    .foregroundStyle(session.injured ? .red : .blue)
             }
             
             ForEach(sessions) { session in
-                LineMark(
-                    x: .value("Date", session.date!),
-                    y: .value("Strength Rating", session.strengthRating),
-                    series: .value("Strength", "Strength")
-                )
-                .foregroundStyle(by: .value("Strength", "Strength"))
-                .interpolationMethod(.catmullRom)
-                
-                
-                PointMark(
-                    x: .value("Date", session.date!),
-                    y: .value("Strength Rating", session.strengthRating)
-                )
-                .symbolSize(25)
-                .foregroundStyle(session.injured ? .red : .green)
+                makeLine(session: session, series: "Strength")
+                    .foregroundStyle(by: .value("Strength", "Strength"))
+                    .interpolationMethod(.catmullRom)
+                makePoint(session: session, series: "Strength")
+                    .symbolSize(25)
+                    .foregroundStyle(session.injured ? .red : .green)
             }
         }
         .chartOverlay { proxy in
