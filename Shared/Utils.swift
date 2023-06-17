@@ -51,7 +51,7 @@ struct TimeRangePicker: View {
 let sessions: [Session] = []
 struct StatsLink: View {
     var body: some View {
-        NavigationLink("Climbing Session Statistics", value: sessions)
+        NavigationLink("Session Statistics", value: sessions)
     }
 }
 

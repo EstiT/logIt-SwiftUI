@@ -50,37 +50,49 @@ func calcInjuryPercentage(sessions: [Session], range: TimeRange) -> Double {
 
 
 struct StatsView: View {
-    var sessions: [Session]
+    var climbingSessions: [Session]
+    var gymSessions: [Session]
     @State private var timeRange: TimeRange = .last30Days
     @State private var slices: [(Double, Color)] = []
     @State private var injuryPercent: Double = 0.0
     
     var body: some View {
         List {
-            Text("Total number of sessions logged: \(sessions.count)").padding(.bottom)
+            
+            Text("Total number of sessions logged: \(climbingSessions.count + gymSessions.count) since \(climbingSessions[0].date?.formatted(Date.FormatStyle().year().month().day()) ?? "")").padding(.bottom)
             VStack(alignment: .leading) {
                 TimeRangePicker(value: $timeRange)
                     .padding(.bottom)
-                let filteredSessions = sessionsInDateRange(sessions: sessions, range: timeRange)
-                Text("Number of sessions logged: \(filteredSessions.count)").padding(.bottom)
-                Text("Average number of sessions per week: \(calcSessionsPerWeek(sessions: filteredSessions, range: timeRange))").padding(.bottom)
-                Text("Average strength rating: \(calcStrengthRating(sessions: filteredSessions))/5").padding(.bottom)
-                Text("Average session rating: \(calcSessionRating(sessions: filteredSessions))/5").padding(.bottom)
+                let filteredClimbingSessions = sessionsInDateRange(sessions: climbingSessions, range: timeRange)
+                
+                let filteredGymSessions = sessionsInDateRange(sessions: gymSessions, range: timeRange)
+                
+                Text("Number of sessions logged: \(filteredClimbingSessions.count + filteredGymSessions.count)").padding(.bottom)
+                
+                Text("Number of climbing sessions logged: \(filteredClimbingSessions.count)").padding(.bottom)
+                Text("Average number of climbing sessions per week: \(calcSessionsPerWeek(sessions: filteredClimbingSessions, range: timeRange))").padding(.bottom)
+                Text("Average number of sessions per week: \(calcSessionsPerWeek(sessions: filteredClimbingSessions + filteredGymSessions, range: timeRange))").padding(.bottom)
+                Text("Average climbing strength rating: \(calcStrengthRating(sessions: filteredClimbingSessions))/5").padding(.bottom)
+                Text("Average climbing session rating: \(calcSessionRating(sessions: filteredClimbingSessions))/5").padding(.bottom)
             }
             HStack {
                 Text("Percentage of sessions injured: \(String(format:"%.1f", injuryPercent))%").padding(.bottom)
                 PieView(slices: $slices, id: timeRange.description).scaleEffect(0.5, anchor: .center)
             }
             .onChange(of: timeRange, perform: { value in
-                let filteredSessions = sessionsInDateRange(sessions: sessions, range: timeRange)
+                let filteredClimbingSessions = sessionsInDateRange(sessions: climbingSessions, range: timeRange)
+                
+                let filteredGymSessions = sessionsInDateRange(sessions: gymSessions, range: timeRange)
 
-                injuryPercent = calcInjuryPercentage(sessions: filteredSessions, range: timeRange)
+                injuryPercent = calcInjuryPercentage(sessions: filteredClimbingSessions + filteredGymSessions, range: timeRange)
                 slices = [(injuryPercent, .red), (100 - injuryPercent, .blue)]
             })
             .onAppear() {
-                let filteredSessions = sessionsInDateRange(sessions: sessions, range: timeRange)
+                let filteredClimbingSessions = sessionsInDateRange(sessions: climbingSessions, range: timeRange)
                 
-                injuryPercent = calcInjuryPercentage(sessions: filteredSessions, range: timeRange)
+                let filteredGymSessions = sessionsInDateRange(sessions: gymSessions, range: timeRange)
+                
+                injuryPercent = calcInjuryPercentage(sessions: filteredClimbingSessions + filteredGymSessions, range: timeRange)
                 slices = [(injuryPercent, .red), (100 - injuryPercent, .blue)]
             }
         }

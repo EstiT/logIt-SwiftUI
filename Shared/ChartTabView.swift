@@ -135,6 +135,11 @@ struct ChartTabView: View {
         predicate: NSPredicate(format: "type != %@", SeshType.gymWeights.description),
         animation: .default)
     private var climbingSessions: FetchedResults<Session>
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Session.date, ascending: true)],
+        predicate: NSPredicate(format: "type == %@", SeshType.gymWeights.description),
+        animation: .default)
+    private var gymSessions: FetchedResults<Session>
     
     var body: some View {
         NavigationStack {
@@ -155,7 +160,7 @@ struct ChartTabView: View {
                         }
                         .listStyle(.plain)
                         .navigationDestination(for: [Session].self) { key in
-                            StatsView(sessions: Array(climbingSessions))
+                            StatsView(climbingSessions: Array(climbingSessions), gymSessions: Array(gymSessions))
                         }
                     }
                     
